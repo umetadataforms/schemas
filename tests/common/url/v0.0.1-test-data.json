@@ -1,0 +1,7 @@
+{
+  "schema": "modular/common/url/v0.0.1.json",
+  "data": [
+    "http://example.org/",
+    "https://example.org/"
+  ]
+}

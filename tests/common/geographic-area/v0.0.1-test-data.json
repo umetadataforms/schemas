@@ -1,0 +1,17 @@
+{
+  "schema": "modular/common/geographic-areas/v0.0.1.json",
+  "data": [
+    {
+      "countryCode": "ES",
+      "countrySubdivisionCodes": [
+        "ES-B",
+        "ES-GI",
+        "ES-L",
+        "ES-T"
+      ]
+    },
+    {
+      "countryCode": "PT"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tabular Data Metadata",
+  "description": "Tabular dataset description.\n\nThis metadata schema provides a structured framework for defining and describing tabular data files used clinical research contexts. It enables clear, standardised documentation of file identity, integrity, and structure, as well as detailed characterisation of each field within the dataset. The schema captures essential information needed to interpret fields/variables, assess data suitability, ensure consistent field definitions, and support harmonisation across datasets. This schema is intended to support reproducibility, interoperability, and transparent documentation, enabling downstream validation, dataset comparison, and integration into broader analytical workflows.\n\nComplete all applicable fields based on the available documentation and knowledge of the dataset.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "title": "Schema URI",
+      "description": "Reference to the schema used.",
+      "type": "string",
+      "const": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json"
+    },
+    "filePath": {
+      "title": "File Path",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/path/v0.0.1.json"
+    },
+    "fileSHA256": {
+      "title": "File SHA256",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/sha256/v0.0.1.json"
+    },
+    "fileLabel": {
+      "title": "File Label",
+      "description": "Human-readable file label. Must contain only letters, numbers, or underscores. *Maximum length*: 255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+$",
+      "maxLength": 255
+    },
+    "fields": {
+      "title": "Fields",
+      "description": "List of fields/variables in the tabular data. *Maximum number* of fields: 100,000.",
+      "type": "array",
+      "items": {
+        "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/field/v0.0.1.json"
+      },
+      "uniqueItems": true,
+      "maxItems": 100000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "filePath",
+    "fields"
+  ],
+  "examples": [
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json",
+      "filePath": "baseline-data.tsv",
+      "fileSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fileLabel": "baseline_data",
+      "fields": [
+        {
+          "label": "SubjectID",
+          "description": "Anonymised subject identifier.",
+          "dataType": "string",
+          "measurementType": "not applicable",
+          "fieldType": "subject_id"
+        },
+        {
+          "label": "BaselineDate",
+          "description": "Baseline date.",
+          "dataType": "datetime",
+          "measurementType": "not applicable",
+          "fieldType": "index_timestamp"
+        },
+        {
+          "label": "Baseline",
+          "description": "Baseline indicator.",
+          "dataType": "integer",
+          "measurementType": "binary",
+          "fieldType": "baseline_indicator"
+        },
+        {
+          "label": "MyocardialInfarction",
+          "description": "Myocardial infarction event during the follow-up",
+          "dataType": "integer",
+          "measurementType": "binary",
+          "categories": [
+            {
+              "label": "no",
+              "code": 0
+            },
+            {
+              "label": "yes",
+              "code": 1
+            }
+          ],
+          "role": "target",
+          "missingValueCode": ""
+        },
+        {
+          "label": "Age",
+          "description": "Patient age in years at baseline.",
+          "dataType": "float",
+          "measurementType": "continuous",
+          "role": "feature",
+          "units": "a",
+          "missingValueCode": ""
+        }
+      ]
+    }
+  ]
+}

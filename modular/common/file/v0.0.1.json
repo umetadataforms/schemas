@@ -1,0 +1,78 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/file/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "File",
+  "description": "A file path with format, checksum, and optional title and description.",
+  "type": "object",
+  "properties": {
+    "path": {
+      "title": "Path",
+      "description": "A relative file or directory path from the root directory. Must include only letters, numbers, underscores, hyphens, forward slashes, or periods. Parent directory references (../) are not allowed. *Maximum length*: 255 characters.",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/path/v0.0.1.json"
+    },
+    "format": {
+      "title": "Format",
+      "description": "The file's format such as PDF, TSV etc., or user-specified format. Must contain only letters, numbers, hyphens or underscores. *Length*: 1-30 characters.",
+      "maxLength": 30,
+      "anyOf": [
+        {
+          "title": "Select Format",
+          "type": "string",
+          "enum": [
+            "TXT",
+            "CSV",
+            "TSV",
+            "H5",
+            "PDF",
+            "DOCX",
+            "Markdown",
+            "JSON",
+            "XML"
+          ]
+        },
+        {
+          "title": "Enter Format",
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$"
+        }
+      ]
+    },
+    "sha256": {
+      "title": "SHA256 Checksum",
+      "description": "The SHA256 checksum of the file.",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/sha256/v0.0.1.json"
+    },
+    "title": {
+      "title": "Title",
+      "description": "A short, descriptive, user-friendly file title, with each word capitalised. *Maximum length*: 255 characters.",
+      "type": "string",
+      "maxLength": 255
+    },
+    "description": {
+      "title": "Description",
+      "description": "A brief description of the file's contents. *Maximum length*: 5,000 characters.",
+      "type": "string",
+      "maxLength": 5000
+    }
+  },
+  "required": [
+    "path",
+    "format"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "path": "resources/data-quality-issues.pdf",
+      "format": "PDF",
+      "title": "Data Quality Issues",
+      "description": "Known data quality issues in the dataset.",
+      "sha256": "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090"
+    },
+    {
+      "path": "resources/codes/snomed-ct-codes.csv",
+      "format": "TSV",
+      "description": "SNOMED CT codes used to construct the variables in the dataset.",
+      "sha256": "d2f4a0a986ce276567f1ab3424f804390ed15b82f3b8dbbfe1715d9dc5e8fa4c"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/doi/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digital Object Identifier (DOI)",
+  "description": "A globally unique string used to identify digital content and provide a persistent internet link. Must start with '10.' and follow the DOI structure. *Maximum length*: 255 characters.",
+  "type": "string",
+  "pattern": "^10\\.\\d{4,9}/[^\\s]+$",
+  "maxLength": 255,
+  "examples": [
+    "10.13026/kfzx-aw45",
+    "10.1000/182"
+  ]
+}

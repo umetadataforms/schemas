@@ -1,0 +1,24 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/units/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "The schema does not enforce conformance to UCUM; this should be validated by the application.",
+  "title": "UCUM Measurement Units",
+  "description": "A measurement unit string as defined by the Unified Code for Units of Measure (UCUM). See https://unitsofmeasure.org/ucum. *Maximum length*: 255 characters. Set to `null` if the unit is unknown.",
+  "oneOf": [
+    {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    {
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+    }
+  ],
+  "examples": [
+    "m",
+    "kg",
+    "umol",
+    "mm[Hg]",
+    null
+  ]
+}

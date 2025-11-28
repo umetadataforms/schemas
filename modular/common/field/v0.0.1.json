@@ -1,0 +1,222 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/field/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "The schema does not enforce inclusion or domain-specific field-type rules; these should be validated by the application.",
+  "title": "Field",
+  "description": "A field or variable in a cross-sectional, repeated measurements, or longitudinal tabular dataset.",
+  "type": "object",
+  "properties": {
+    "label": {
+      "title": "Label",
+      "description": "A short, stable, user-friendly identifier for the field. Used as a readable substitute for UUIDs, or alongside them in interfaces, logs, and references. Must contain only letters, numbers, or underscores. *Length*: 2-75 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+$",
+      "minLength": 2,
+      "maxLength": 75
+    },
+    "description": {
+      "title": "Description",
+      "description": "Brief description of the field. Used for providing clinical definition of the field. *Maximum length*: 5,000 characters.",
+      "type": "string",
+      "maxLength": 5000
+    },
+    "dataType": {
+      "title": "Data Type",
+      "description": "Data type of the field. Must be one of `integer`, `float`, `date`, `datetime`, or `string`.",
+      "type": "string",
+      "enum": [
+        "integer",
+        "float",
+        "date",
+        "datetime",
+        "string"
+      ]
+    },
+    "dateFormat": {
+      "title": "Date/Datetime Format",
+      "description": "String format for `date` and `datetime` fields. *Maximum length*: 255 characters.",
+      "type": "string",
+      "maxLength": 255
+    },
+    "measurementType": {
+      "title": "Measurement Type",
+      "oneOf": [
+        {
+          "description": "Measurement type or scale of the field. 1. Categorical fields. `nominal`-- unordered categories. Assign codes starting from 1, in alphabetical order. `ordinal` -- ordered categories. Start with 1; use 0 only if a 'none' or baseline category exists. `binary`-- two-category data. 2. Numeric fields. `discrete` -- countable values. `continuous` -- measurable quantities. Set the field to `other` if none of the above types apply. Set the field to `not applicable` if the field is not of measurement type such as subject identifier. Set the field to `null` if the measurement type cannot be determined, i.e. the information is missing.",
+          "type": "string",
+          "enum": [
+            "nominal",
+            "ordinal",
+            "binary",
+            "discrete",
+            "continuous",
+            "other",
+            "not applicable"
+          ]
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+        }
+      ]
+    },
+    "role": {
+      "title": "Intended Role",
+      "description": "The intended analytical role of the field in modeling or data processing. `target`: the outcome to be predicted; `feature`: predictor, independent or explanatory variable. Set the field to `null` if the role is unknown.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "target",
+            "feature"
+          ]
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+        }
+      ]
+    },
+    "categories": {
+      "title": "Integer-Coded Categories",
+      "description": "A list of unique categories of a nominal, ordinal, or binary variable. *Number of categories*: 1-10,000. ",
+      "type": "array",
+      "items": {
+        "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/category/v0.0.1.json"
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 10000
+    },
+    "units": {
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/units/v0.0.1.json"
+    },
+    "missingValueCode": {
+      "title": "Missing Value Code",
+      "description": "A single code used to represent missing values in the field, either as an integer or a string. String values may include letters, numbers, forward slashes, underscores, hyphens, or spaces. *Maximum length*: 25 characters. Set to `null` if the missing values are present but the missing value code is unknown. Omit if the field has no missing values.",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[ A-Za-z0-9/_-]*$",
+          "maxLength": 25
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+        }
+      ]
+    },
+    "resources": {
+      "title": "Resources",
+      "description": "A list of URLs or file references related to the measurement or construction of the field. *Maximum number* of items: 1000. Set to `null` if relevant resources exist but cannot be retrieved or shared. Omit if not relevant.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/url/v0.0.1.json"
+              },
+              {
+                "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/file/v0.0.1.json"
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 1000
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+        }
+      ]
+    },
+    "fieldType": {
+      "title": "Field Type",
+      "description": "One of the pre-specified types of field for special fields: `subject_id` -- subject identifier field; `baseline_indicator` -- binary field that indicates whether the measurement was taken at baseline, 1 -- baseline, 0 -- follow-up; `index_timestamp` --  field that indicates the date and/or time of the measurement; `temporal_order` -- field that indicates integer time index of the measurement if the actual timestamp cannot be provided; `path` -- field that indicates that its data is a directory or a file path. Note, this list might be extended in the future.",
+      "type": "string",
+      "enum": [
+        "subject_id",
+        "baseline_indicator",
+        "index_timestamp",
+        "temporal_order",
+        "path"
+      ]
+    },
+    "tags": {
+      "title": "Clinical Concept Tags",
+      "description": "Clinical concept tags associated with the field.",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/tags/v0.0.1.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "label",
+    "description",
+    "dataType",
+    "measurementType"
+  ],
+  "examples": [
+    {
+      "label": "SubjectID",
+      "description": "Subject identifier.",
+      "dataType": "integer",
+      "measurementType": "not applicable",
+      "fieldType": "subject_id"
+    },
+    {
+      "label": "SystolicBloodPressure",
+      "description": "Systolic blood pressure measured at ICU admission.",
+      "dataType": "float",
+      "measurementType": "continuous",
+      "role": "feature",
+      "units": "mm[Hg]",
+      "missingValueCode": "",
+      "tags": [
+        {
+          "code": 271649006,
+          "name": "Systolic blood pressure",
+          "isPrimary": true
+        }
+      ]
+    },
+    {
+      "label": "Sex",
+      "description": "Biological sex",
+      "dataType": "integer",
+      "measurementType": "binary",
+      "categories": [
+        {
+          "label": "female",
+          "code": 0
+        },
+        {
+          "label": "male",
+          "code": 1
+        }
+      ],
+      "role": "feature",
+      "missingValueCode": "NA",
+      "tags": [
+        {
+          "code": 734000001,
+          "name": "Biological sex",
+          "isPrimary": true
+        }
+      ]
+    },
+    {
+      "label": "ImageFile",
+      "description": "Path to the associated image file.",
+      "dataType": "string",
+      "measurementType": "not applicable",
+      "fieldType": "path"
+    },
+    {
+      "label": "Baseline",
+      "description": "Baseline indicator.",
+      "dataType": "integer",
+      "measurementType": "not applicable",
+      "fieldType": "baseline_indicator"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+#+title: Validator Setup
+#+property: header-args :results verbatim
+
+#+begin_src shell
+npm install ajv ajv-formats
+#+end_src
+
+#+RESULTS:
+:
+: added 6 packages in 183ms
+:
+: 2 packages are looking for funding
+:   run `npm fund` for details

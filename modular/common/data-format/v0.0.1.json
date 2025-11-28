@@ -1,0 +1,111 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/data-format/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Format",
+  "description": "A recognised data format associated with a given recognised data modality.",
+  "anyOf": [
+    {
+      "title": "Tabular Data",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "description": "Cross-sectional, repeated measurements, or longitudinal tabular data.",
+          "const": "tabular"
+        },
+        "dataFormats": {
+          "title": "Data Format",
+          "description": "TSV -- tab-delimited, CSV -- comma-separated flat text files. Note, if some columns in the tabular data contain either tabs or commas, they should be surrounded with double quotes.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "TSV",
+              "CSV"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    },
+    {
+      "title": "Time Series",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "description": "Time series data.",
+          "const": "time series"
+        },
+        "dataFormats": {
+          "title": "Data Format",
+          "description": "WFDB -- waveform database format for ECG data. iEEG-BIDS -- BIDS format for iEEG data, and BIDS format for other similar data. HDF5 -- Hierarchical Data Format Version 5, or TSV -- tab-delimited or CSV -- comma-separated files for other time series datasets.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "WFDB",
+              "iEEG-BIDS",
+              "BIDS",
+              "HDF5",
+              "TSV",
+              "CSV"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    },
+    {
+      "title": "Images",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "description": "Image data.",
+          "const": "image"
+        },
+        "dataFormats": {
+          "title": "Data Format",
+          "description": "DICOM -- Digital Imaging and Communications in Medicine format, PNG, JPG or JPEG.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "DICOM",
+              "PNG",
+              "JPG",
+              "JPEG"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    }
+  ],
+  "examples": [
+    [
+      {
+        "dataModality": "tabular",
+        "dataFormats": [
+          "TSV"
+        ]
+      },
+      {
+        "dataModality": "time series",
+        "dataFormats": [
+          "HDF5"
+        ]
+      }
+    ]
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/period/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Period",
+  "description": "A period with start and end dates. Make sure `startDate` ≤ `endDate`.",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "title": "Start Date",
+      "oneOf": [
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/date/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+        }
+      ]
+    },
+    "endDate": {
+      "title": "End Date",
+      "oneOf": [
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/date/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json"
+        }
+      ]
+    }
+  },
+  "required": [
+    "startDate",
+    "endDate"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "startDate": "2010-01-01",
+      "endDate": "2020-12-31"
+    },
+    {
+      "startDate": null,
+      "endDate": "2020-12-31"
+    }
+  ]
+}

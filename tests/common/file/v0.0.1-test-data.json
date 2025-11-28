@@ -1,0 +1,18 @@
+{
+  "schema": "modular/common/file/v0.0.1.json",
+  "data": [
+    {
+      "path": "resources/data-quality-issues.pdf",
+      "format": "PDF",
+      "title": "Data Quality Issues",
+      "description": "Known data quality issues in the dataset.",
+      "sha256": "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090"
+    },
+    {
+      "path": "resources/codes/snomed-ct-codes.csv",
+      "format": "TSV",
+      "description": "SNOMED CT codes used to construct the variables in the dataset.",
+      "sha256": "d2f4a0a986ce276567f1ab3424f804390ed15b82f3b8dbbfe1715d9dc5e8fa4c"
+    }
+  ]
+}

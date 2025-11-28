@@ -1,0 +1,39 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/geographic-areas/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Country Code and its Subdivision Codes",
+  "description": "An ISO 3166-1 country code and an optional list of its ISO 3166-2 subdivision codes. *Maximum number* of subdivision codes: 500.",
+  "type": "object",
+  "properties": {
+    "countryCode": {
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/country-code/v0.0.1.json"
+    },
+    "countrySubdivisionCodes": {
+      "title": "Country Subdivision Codes",
+      "type": "array",
+      "items": {
+        "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/country-subdivision-code/v0.0.1.json"
+      },
+      "uniqueItems": true,
+      "maxItems": 500
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "countryCode"
+  ],
+  "examples": [
+    {
+      "countryCode": "ES",
+      "countrySubdivisionCodes": [
+        "ES-B",
+        "ES-GI",
+        "ES-L",
+        "ES-T"
+      ]
+    },
+    {
+      "countryCode": "PT"
+    }
+  ]
+}

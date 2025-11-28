@@ -1,0 +1,8 @@
+{
+  "schema": "modular/common/path/v0.0.1.json",
+  "data": [
+    "baseline-data.tsv",
+    "data/image-id1.png",
+    "time-series/ecg/subject-0001/record-001.dat"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/sha256/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SHA256 Checksum",
+  "description": "The SHA256 checksum of a file.",
+  "type": "string",
+  "pattern": "^[A-Fa-f0-9]{64}$",
+  "examples": [
+    "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090",
+    "971172E9A6DB5D7C0AFC980598FEA4AD63C5862327888EE7A42954FD31EBA090"
+  ]
+}

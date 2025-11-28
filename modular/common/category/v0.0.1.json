@@ -1,0 +1,34 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/category/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Category",
+  "description": "A single category of a nominal, ordinal, or binary variable.",
+  "type": "object",
+  "properties": {
+    "label": {
+      "description": "Clear and informative category label. *Length*: 1-255 characters.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "code": {
+      "description": "Integer code used in data files instead of the label.",
+      "type": "integer"
+    },
+    "tags": {
+      "description": "A list of clinical concept tags associated with the category.",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/tags/v0.0.1.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "label",
+    "code"
+  ],
+  "examples": [
+    {
+      "label": "male",
+      "code": 1
+    }
+  ]
+}

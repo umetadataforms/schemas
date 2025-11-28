@@ -1,0 +1,13 @@
+{
+  "schema": "modular/common/contact-person/v0.0.1.json",
+  "data": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "role": "Data Manager",
+      "email": "john.doe@email.com",
+      "telephone": "+12345678901",
+      "comments": "Prefer to be contacted by email."
+    }
+  ]
+}

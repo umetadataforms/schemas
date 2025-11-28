@@ -1,0 +1,37 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/annotated-url/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URL Link",
+  "description": "Uniform Resource Locator (URL) with optional title and description.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "title": "Link",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/url/v0.0.1.json"
+    },
+    "title": {
+      "title": "Title",
+      "description": "A short, descriptive, user-friendly URL title, with each main word capitalised. Used in interfaces for display purposes instead of the actual URL link. Use specific, meaningful keywords to indicate what the URL is about at a glance. *Maximum length*: 255 characters.",
+      "type": "string",
+      "maxLength": 255
+    },
+    "description": {
+      "title": "Description",
+      "description": "A brief description of the URL's content. Be clear and concise. *Maximum length*: 1,500 characters.",
+      "type": "string",
+      "maxLength": 1500
+    }
+  },
+  "required": [
+    "url",
+    "title"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "url": "https://ucum.org",
+      "title": "UCUM Units",
+      "description": "Measurement units defined by Unified Code for Units of Measure (UCUM)."
+    }
+  ]
+}

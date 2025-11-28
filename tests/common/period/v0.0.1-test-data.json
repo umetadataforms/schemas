@@ -1,0 +1,13 @@
+{
+  "schema": "modular/common/period/v0.0.1.json",
+  "data": [
+    {
+      "startDate": "2010-01-01",
+      "endDate": "2020-12-31"
+    },
+    {
+      "startDate": null,
+      "endDate": "2020-12-31"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/email/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email",
+  "description": "An email address as defined by RFC 5321. *Maximum length*: 255 characters.",
+  "type": "string",
+  "format": "email",
+  "maxLength": 255,
+  "examples": [
+    "john.doe@email.com"
+  ]
+}

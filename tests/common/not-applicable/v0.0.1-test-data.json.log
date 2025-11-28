@@ -1,0 +1,24 @@
+JSON Data Test Log
+
+Timestamp: 2025-11-28T20:38:39.515Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/projects/umetadataforms/schemas
+ Schema ref:     modular/common/not-applicable/v0.0.1.json
+ Root schema:    ../../../modular/common/not-applicable/v0.0.1.json
+ Test file:      ../../../tests/common/not-applicable/v0.0.1-test-data.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/common/not-applicable/v0.0.1.json
+ SHA256:         6553391e565f2d289911db4505021b863c14191bd1604d5982bc0487b9bb2171
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Test File ====================================================================
+ Path:           ../../../tests/common/not-applicable/v0.0.1-test-data.json
+ SHA256:         8336615d0cfef1b8d9df1bb1ea5600f30e1f18c0370307609e27d491f173dfde
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Validation ===================================================================
+✔ data[0] is valid.

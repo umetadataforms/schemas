@@ -1,0 +1,8 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-required/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Not Required",
+  "description": "Marks a piece of information as not required.",
+  "type": "string",
+  "const": "not required"
+}

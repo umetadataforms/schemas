@@ -1,0 +1,26 @@
+JSON Data Test Log
+
+Timestamp: 2025-11-28T20:38:38.801Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/projects/umetadataforms/schemas
+ Schema ref:     modular/common/country-code/v0.0.1.json
+ Root schema:    ../../../modular/common/country-code/v0.0.1.json
+ Test file:      ../../../tests/common/country-code/v0.0.1-test-data.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/common/country-code/v0.0.1.json
+ SHA256:         bf20672147ce8de23b3a09446bd96420cac2f927ddcd1261d3fff7f21c7e19f7
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Test File ====================================================================
+ Path:           ../../../tests/common/country-code/v0.0.1-test-data.json
+ SHA256:         44852bf8fdb6acd300db4dbf87d061a947a17a3799d724d9133f351ad974fd34
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Validation ===================================================================
+✔ data[0] is valid.
+✔ data[1] is valid.
+✔ data[2] is valid.

@@ -1,0 +1,25 @@
+JSON Data Test Log
+
+Timestamp: 2025-11-28T20:38:38.477Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/projects/umetadataforms/schemas
+ Schema ref:     modular/common/annotated-url/v0.0.1.json
+ Root schema:    ../../../modular/common/annotated-url/v0.0.1.json
+ Test file:      ../../../tests/common/annotated-url/v0.0.1-test-data.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/common/annotated-url/v0.0.1.json
+ SHA256:         adecdc8302b0afdb8392f6f3b50e37f0227522b871d52c2d4e9f30eb3144290b
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Test File ====================================================================
+ Path:           ../../../tests/common/annotated-url/v0.0.1-test-data.json
+ SHA256:         7e94b3c02af807b9bd0428766d0f4a37307ee37cf6b42e6fb4d9c8685d607b48
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Validation ===================================================================
+✔ data[0] is valid.
+✔ data[1] is valid.

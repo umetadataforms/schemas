@@ -1,0 +1,12 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/data-modality/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Modality",
+  "description": "Recognised data modality term.",
+  "type": "string",
+  "enum": [
+    "tabular",
+    "time series",
+    "image"
+  ]
+}

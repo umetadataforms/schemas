@@ -1,0 +1,728 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/standalone/tabular-data-metadata/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tabular Data Metadata",
+  "description": "Tabular dataset description.\n\nThis metadata schema provides a structured framework for defining and describing tabular data files used clinical research contexts. It enables clear, standardised documentation of file identity, integrity, and structure, as well as detailed characterisation of each field within the dataset. The schema captures essential information needed to interpret fields/variables, assess data suitability, ensure consistent field definitions, and support harmonisation across datasets. This schema is intended to support reproducibility, interoperability, and transparent documentation, enabling downstream validation, dataset comparison, and integration into broader analytical workflows.\n\nComplete all applicable fields based on the available documentation and knowledge of the dataset.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "title": "Schema URI",
+      "description": "Reference to the schema used.",
+      "type": "string",
+      "const": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json"
+    },
+    "filePath": {
+      "title": "File Path",
+      "description": "A relative file or directory path from the current working directory. Must include only letters, numbers, underscores, hyphens, forward slashes, or periods. Parent directory references (../) are not allowed. *Maximum length*: 1,024 characters.",
+      "type": "string",
+      "maxLength": 1024,
+      "pattern": "^(?!\\.\\.\\/)[A-Za-z0-9._\\/-]+$",
+      "examples": [
+        "baseline-data.tsv",
+        "data/image-id1.png",
+        "time-series/ecg/subject-0001/record-001.dat"
+      ]
+    },
+    "fileSHA256": {
+      "title": "File SHA256",
+      "description": "The SHA256 checksum of a file.",
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$",
+      "examples": [
+        "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090",
+        "971172E9A6DB5D7C0AFC980598FEA4AD63C5862327888EE7A42954FD31EBA090"
+      ]
+    },
+    "fileLabel": {
+      "title": "File Label",
+      "description": "Human-readable file label. Must contain only letters, numbers, or underscores. *Maximum length*: 255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+$",
+      "maxLength": 255
+    },
+    "fields": {
+      "title": "Fields",
+      "description": "List of fields/variables in the tabular data. *Maximum number* of fields: 100,000.",
+      "type": "array",
+      "items": {
+        "$comment": "The schema does not enforce inclusion or domain-specific field-type rules; these should be validated by the application.",
+        "title": "Field",
+        "description": "A field or variable in a cross-sectional, repeated measurements, or longitudinal tabular dataset.",
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "description": "A short, stable, user-friendly identifier for the field. Used as a readable substitute for UUIDs, or alongside them in interfaces, logs, and references. Must contain only letters, numbers, or underscores. *Length*: 2-75 characters.",
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_]+$",
+            "minLength": 2,
+            "maxLength": 75
+          },
+          "description": {
+            "title": "Description",
+            "description": "Brief description of the field. Used for providing clinical definition of the field. *Maximum length*: 5,000 characters.",
+            "type": "string",
+            "maxLength": 5000
+          },
+          "dataType": {
+            "title": "Data Type",
+            "description": "Data type of the field. Must be one of `integer`, `float`, `date`, `datetime`, or `string`.",
+            "type": "string",
+            "enum": [
+              "integer",
+              "float",
+              "date",
+              "datetime",
+              "string"
+            ]
+          },
+          "dateFormat": {
+            "title": "Date/Datetime Format",
+            "description": "String format for `date` and `datetime` fields. *Maximum length*: 255 characters.",
+            "type": "string",
+            "maxLength": 255
+          },
+          "measurementType": {
+            "title": "Measurement Type",
+            "oneOf": [
+              {
+                "description": "Measurement type or scale of the field. 1. Categorical fields. `nominal`-- unordered categories. Assign codes starting from 1, in alphabetical order. `ordinal` -- ordered categories. Start with 1; use 0 only if a 'none' or baseline category exists. `binary`-- two-category data. 2. Numeric fields. `discrete` -- countable values. `continuous` -- measurable quantities. Set the field to `other` if none of the above types apply. Set the field to `not applicable` if the field is not of measurement type such as subject identifier. Set the field to `null` if the measurement type cannot be determined, i.e. the information is missing.",
+                "type": "string",
+                "enum": [
+                  "nominal",
+                  "ordinal",
+                  "binary",
+                  "discrete",
+                  "continuous",
+                  "other",
+                  "not applicable"
+                ]
+              },
+              {
+                "title": "Unknown",
+                "description": "Unknown, missing information. Field set to `null`.",
+                "type": "null"
+              }
+            ]
+          },
+          "role": {
+            "title": "Intended Role",
+            "description": "The intended analytical role of the field in modeling or data processing. `target`: the outcome to be predicted; `feature`: predictor, independent or explanatory variable. Set the field to `null` if the role is unknown.",
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "target",
+                  "feature"
+                ]
+              },
+              {
+                "title": "Unknown",
+                "description": "Unknown, missing information. Field set to `null`.",
+                "type": "null"
+              }
+            ]
+          },
+          "categories": {
+            "title": "Integer-Coded Categories",
+            "description": "A list of unique categories of a nominal, ordinal, or binary variable. *Number of categories*: 1-10,000. ",
+            "type": "array",
+            "items": {
+              "title": "Category",
+              "description": "A single category of a nominal, ordinal, or binary variable.",
+              "type": "object",
+              "properties": {
+                "label": {
+                  "description": "Clear and informative category label. *Length*: 1-255 characters.",
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "code": {
+                  "description": "Integer code used in data files instead of the label.",
+                  "type": "integer"
+                },
+                "tags": {
+                  "description": "A list of clinical concept tags associated with the category.",
+                  "title": "Tags",
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "A user-friendly tag name. Keep it short, descriptive, and unambiguous. Avoid acronyms unless widely recognized. *Maximum length*: 255 characters.",
+                                "maxLength": 255
+                              }
+                            }
+                          },
+                          {
+                            "$comment": "Removed additionalProperties: false. Make sure to use unevaluatedProperties: false in parent schemas.",
+                            "title": "Clinical Concept Code",
+                            "description": "A clinical concept code with its identifier, preferred name, and optional vocabulary and vocabulary version.\n\n**Use**: Used in semantic data interoperability, search, and filtering.\n\n**Guidelines**: Ensure the concept code is semantically correct and comes from one of the standardised vocabularies. Set to the field to `null` if there is no matching standardised clinical concept or a matching concept wasn't looked up.\n- `code` must be a valid identifier from the specified vocabulary.\n- `name` must match the preferred name of the concept in the specified vocabulary.\n- `code` and `name` must be matching pairs within the specified vocabulary.\n- `vocabulary` should be a stable, recognisable identifier (e.g., SNOMED-CT, ICD-10).\n- `vocabularyVersion`should be stated when possible.\n\n**Constraints**:\n- `code` A string or ineger.\n- `code` *Maximum length*: 255 characters if a string.\n- `name` *Maximum length*: 255 characters.\n- `vocabulary` *Maximum length*: 75 characters.\n- `vocabularyVersion` *Maximum length* 75 characters.",
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "title": "Code",
+                                "description": "A clinical concept code from one of the standardised clinical vocabularies.",
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  },
+                                  {
+                                    "type": "integer"
+                                  }
+                                ]
+                              },
+                              "name": {
+                                "title": "Name",
+                                "description": "The preferred clinical concept name associated with the code.",
+                                "type": "string",
+                                "maxLength": 255
+                              },
+                              "vocabulary": {
+                                "title": "Vocabulary",
+                                "description": "The standardised clinical vocabulary associated with the code.",
+                                "type": "string",
+                                "maxLength": 75
+                              },
+                              "vocabularyVersion": {
+                                "title": "Vocabulary Version",
+                                "description": "The version of the vocabulary.",
+                                "type": "string",
+                                "maxLength": 75
+                              }
+                            },
+                            "additionalProperties": true,
+                            "required": [
+                              "code",
+                              "name"
+                            ],
+                            "examples": [
+                              {
+                                "code": "I21",
+                                "name": "Acute myocardial infarction",
+                                "vocabulary": "ICD-10",
+                                "vocabularyVersion": "2019"
+                              },
+                              {
+                                "code": 4855003,
+                                "name": "Retinopathy due to diabetes mellitus",
+                                "vocabulary": "SNOMED-CT",
+                                "vocabularyVersion": "v1.36.4"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "isPrimary": {
+                            "type": "boolean",
+                            "description": "Indicates whether this tag is the primary or most representative concept for the thing being tagged. Only one tag should typically be marked as primary. Leave unset if no primary tag can be determined."
+                          },
+                          "confidenceScore": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "Confidence score assigned by a tagging model or system. Provides a measure of certainty for automatically generated tags. Only include this field for tags generated by an automated process. *Range*: [0.0, 1.0]."
+                          }
+                        }
+                      }
+                    ],
+                    "unevaluatedProperties": false,
+                    "required": [
+                      "name"
+                    ]
+                  },
+                  "uniqueItems": true,
+                  "maxItems": 50,
+                  "examples": [
+                    [
+                      {
+                        "code": "I21",
+                        "name": "Acute myocardial infarction",
+                        "vocabulary": "ICD-10",
+                        "vocabularyVersion": "2019",
+                        "isPrimary": true
+                      }
+                    ],
+                    [
+                      {
+                        "name": "echocardiography"
+                      }
+                    ],
+                    [
+                      {
+                        "name": "echocardiography",
+                        "isPrimary": true,
+                        "confidenceScore": 0.88
+                      }
+                    ]
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "code"
+              ],
+              "examples": [
+                {
+                  "label": "male",
+                  "code": 1
+                }
+              ]
+            },
+            "uniqueItems": true,
+            "minItems": 1,
+            "maxItems": 10000
+          },
+          "units": {
+            "$comment": "The schema does not enforce conformance to UCUM; this should be validated by the application.",
+            "title": "UCUM Measurement Units",
+            "description": "A measurement unit string as defined by the Unified Code for Units of Measure (UCUM). See https://unitsofmeasure.org/ucum. *Maximum length*: 255 characters. Set to `null` if the unit is unknown.",
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              {
+                "title": "Unknown",
+                "description": "Unknown, missing information. Field set to `null`.",
+                "type": "null"
+              }
+            ],
+            "examples": [
+              "m",
+              "kg",
+              "umol",
+              "mm[Hg]",
+              null
+            ]
+          },
+          "missingValueCode": {
+            "title": "Missing Value Code",
+            "description": "A single code used to represent missing values in the field, either as an integer or a string. String values may include letters, numbers, forward slashes, underscores, hyphens, or spaces. *Maximum length*: 25 characters. Set to `null` if the missing values are present but the missing value code is unknown. Omit if the field has no missing values.",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[ A-Za-z0-9/_-]*$",
+                "maxLength": 25
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "title": "Unknown",
+                "description": "Unknown, missing information. Field set to `null`.",
+                "type": "null"
+              }
+            ]
+          },
+          "resources": {
+            "title": "Resources",
+            "description": "A list of URLs or file references related to the measurement or construction of the field. *Maximum number* of items: 1000. Set to `null` if relevant resources exist but cannot be retrieved or shared. Omit if not relevant.",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "title": "URL Link",
+                      "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator). *Maximum length*: 2,048 characters.",
+                      "type": "string",
+                      "format": "uri",
+                      "pattern": "^https?://.+$",
+                      "maxLength": 2048,
+                      "examples": [
+                        "http://example.org/",
+                        "https://example.org/"
+                      ]
+                    },
+                    {
+                      "title": "File",
+                      "description": "A file path with format, checksum, and optional title and description.",
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "title": "Path",
+                          "description": "A relative file or directory path from the root directory. Must include only letters, numbers, underscores, hyphens, forward slashes, or periods. Parent directory references (../) are not allowed. *Maximum length*: 255 characters.",
+                          "type": "string",
+                          "maxLength": 1024,
+                          "pattern": "^(?!\\.\\.\\/)[A-Za-z0-9._\\/-]+$",
+                          "examples": [
+                            "baseline-data.tsv",
+                            "data/image-id1.png",
+                            "time-series/ecg/subject-0001/record-001.dat"
+                          ]
+                        },
+                        "format": {
+                          "title": "Format",
+                          "description": "The file's format such as PDF, TSV etc., or user-specified format. Must contain only letters, numbers, hyphens or underscores. *Length*: 1-30 characters.",
+                          "maxLength": 30,
+                          "anyOf": [
+                            {
+                              "title": "Select Format",
+                              "type": "string",
+                              "enum": [
+                                "TXT",
+                                "CSV",
+                                "TSV",
+                                "H5",
+                                "PDF",
+                                "DOCX",
+                                "Markdown",
+                                "JSON",
+                                "XML"
+                              ]
+                            },
+                            {
+                              "title": "Enter Format",
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9_-]+$"
+                            }
+                          ]
+                        },
+                        "sha256": {
+                          "title": "SHA256 Checksum",
+                          "description": "The SHA256 checksum of the file.",
+                          "type": "string",
+                          "pattern": "^[A-Fa-f0-9]{64}$",
+                          "examples": [
+                            "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090",
+                            "971172E9A6DB5D7C0AFC980598FEA4AD63C5862327888EE7A42954FD31EBA090"
+                          ]
+                        },
+                        "title": {
+                          "title": "Title",
+                          "description": "A short, descriptive, user-friendly file title, with each word capitalised. *Maximum length*: 255 characters.",
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "description": {
+                          "title": "Description",
+                          "description": "A brief description of the file's contents. *Maximum length*: 5,000 characters.",
+                          "type": "string",
+                          "maxLength": 5000
+                        }
+                      },
+                      "required": [
+                        "path",
+                        "format"
+                      ],
+                      "additionalProperties": false,
+                      "examples": [
+                        {
+                          "path": "resources/data-quality-issues.pdf",
+                          "format": "PDF",
+                          "title": "Data Quality Issues",
+                          "description": "Known data quality issues in the dataset.",
+                          "sha256": "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090"
+                        },
+                        {
+                          "path": "resources/codes/snomed-ct-codes.csv",
+                          "format": "TSV",
+                          "description": "SNOMED CT codes used to construct the variables in the dataset.",
+                          "sha256": "d2f4a0a986ce276567f1ab3424f804390ed15b82f3b8dbbfe1715d9dc5e8fa4c"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "uniqueItems": true,
+                "maxItems": 1000
+              },
+              {
+                "title": "Unknown",
+                "description": "Unknown, missing information. Field set to `null`.",
+                "type": "null"
+              }
+            ]
+          },
+          "fieldType": {
+            "title": "Field Type",
+            "description": "One of the pre-specified types of field for special fields: `subject_id` -- subject identifier field; `baseline_indicator` -- binary field that indicates whether the measurement was taken at baseline, 1 -- baseline, 0 -- follow-up; `index_timestamp` --  field that indicates the date and/or time of the measurement; `temporal_order` -- field that indicates integer time index of the measurement if the actual timestamp cannot be provided; `path` -- field that indicates that its data is a directory or a file path. Note, this list might be extended in the future.",
+            "type": "string",
+            "enum": [
+              "subject_id",
+              "baseline_indicator",
+              "index_timestamp",
+              "temporal_order",
+              "path"
+            ]
+          },
+          "tags": {
+            "title": "Clinical Concept Tags",
+            "description": "Clinical concept tags associated with the field.",
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "A user-friendly tag name. Keep it short, descriptive, and unambiguous. Avoid acronyms unless widely recognized. *Maximum length*: 255 characters.",
+                          "maxLength": 255
+                        }
+                      }
+                    },
+                    {
+                      "$comment": "Removed additionalProperties: false. Make sure to use unevaluatedProperties: false in parent schemas.",
+                      "title": "Clinical Concept Code",
+                      "description": "A clinical concept code with its identifier, preferred name, and optional vocabulary and vocabulary version.\n\n**Use**: Used in semantic data interoperability, search, and filtering.\n\n**Guidelines**: Ensure the concept code is semantically correct and comes from one of the standardised vocabularies. Set to the field to `null` if there is no matching standardised clinical concept or a matching concept wasn't looked up.\n- `code` must be a valid identifier from the specified vocabulary.\n- `name` must match the preferred name of the concept in the specified vocabulary.\n- `code` and `name` must be matching pairs within the specified vocabulary.\n- `vocabulary` should be a stable, recognisable identifier (e.g., SNOMED-CT, ICD-10).\n- `vocabularyVersion`should be stated when possible.\n\n**Constraints**:\n- `code` A string or ineger.\n- `code` *Maximum length*: 255 characters if a string.\n- `name` *Maximum length*: 255 characters.\n- `vocabulary` *Maximum length*: 75 characters.\n- `vocabularyVersion` *Maximum length* 75 characters.",
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "title": "Code",
+                          "description": "A clinical concept code from one of the standardised clinical vocabularies.",
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            {
+                              "type": "integer"
+                            }
+                          ]
+                        },
+                        "name": {
+                          "title": "Name",
+                          "description": "The preferred clinical concept name associated with the code.",
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "vocabulary": {
+                          "title": "Vocabulary",
+                          "description": "The standardised clinical vocabulary associated with the code.",
+                          "type": "string",
+                          "maxLength": 75
+                        },
+                        "vocabularyVersion": {
+                          "title": "Vocabulary Version",
+                          "description": "The version of the vocabulary.",
+                          "type": "string",
+                          "maxLength": 75
+                        }
+                      },
+                      "additionalProperties": true,
+                      "required": [
+                        "code",
+                        "name"
+                      ],
+                      "examples": [
+                        {
+                          "code": "I21",
+                          "name": "Acute myocardial infarction",
+                          "vocabulary": "ICD-10",
+                          "vocabularyVersion": "2019"
+                        },
+                        {
+                          "code": 4855003,
+                          "name": "Retinopathy due to diabetes mellitus",
+                          "vocabulary": "SNOMED-CT",
+                          "vocabularyVersion": "v1.36.4"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "isPrimary": {
+                      "type": "boolean",
+                      "description": "Indicates whether this tag is the primary or most representative concept for the thing being tagged. Only one tag should typically be marked as primary. Leave unset if no primary tag can be determined."
+                    },
+                    "confidenceScore": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "description": "Confidence score assigned by a tagging model or system. Provides a measure of certainty for automatically generated tags. Only include this field for tags generated by an automated process. *Range*: [0.0, 1.0]."
+                    }
+                  }
+                }
+              ],
+              "unevaluatedProperties": false,
+              "required": [
+                "name"
+              ]
+            },
+            "uniqueItems": true,
+            "maxItems": 50,
+            "examples": [
+              [
+                {
+                  "code": "I21",
+                  "name": "Acute myocardial infarction",
+                  "vocabulary": "ICD-10",
+                  "vocabularyVersion": "2019",
+                  "isPrimary": true
+                }
+              ],
+              [
+                {
+                  "name": "echocardiography"
+                }
+              ],
+              [
+                {
+                  "name": "echocardiography",
+                  "isPrimary": true,
+                  "confidenceScore": 0.88
+                }
+              ]
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "description",
+          "dataType",
+          "measurementType"
+        ],
+        "examples": [
+          {
+            "label": "SubjectID",
+            "description": "Subject identifier.",
+            "dataType": "integer",
+            "measurementType": "not applicable",
+            "fieldType": "subject_id"
+          },
+          {
+            "label": "SystolicBloodPressure",
+            "description": "Systolic blood pressure measured at ICU admission.",
+            "dataType": "float",
+            "measurementType": "continuous",
+            "role": "feature",
+            "units": "mm[Hg]",
+            "missingValueCode": "",
+            "tags": [
+              {
+                "code": 271649006,
+                "name": "Systolic blood pressure",
+                "isPrimary": true
+              }
+            ]
+          },
+          {
+            "label": "Sex",
+            "description": "Biological sex",
+            "dataType": "integer",
+            "measurementType": "binary",
+            "categories": [
+              {
+                "label": "female",
+                "code": 0
+              },
+              {
+                "label": "male",
+                "code": 1
+              }
+            ],
+            "role": "feature",
+            "missingValueCode": "NA",
+            "tags": [
+              {
+                "code": 734000001,
+                "name": "Biological sex",
+                "isPrimary": true
+              }
+            ]
+          },
+          {
+            "label": "ImageFile",
+            "description": "Path to the associated image file.",
+            "dataType": "string",
+            "measurementType": "not applicable",
+            "fieldType": "path"
+          },
+          {
+            "label": "Baseline",
+            "description": "Baseline indicator.",
+            "dataType": "integer",
+            "measurementType": "not applicable",
+            "fieldType": "baseline_indicator"
+          }
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 100000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "filePath",
+    "fields"
+  ],
+  "examples": [
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json",
+      "filePath": "baseline-data.tsv",
+      "fileSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fileLabel": "baseline_data",
+      "fields": [
+        {
+          "label": "SubjectID",
+          "description": "Anonymised subject identifier.",
+          "dataType": "string",
+          "measurementType": "not applicable",
+          "fieldType": "subject_id"
+        },
+        {
+          "label": "BaselineDate",
+          "description": "Baseline date.",
+          "dataType": "datetime",
+          "measurementType": "not applicable",
+          "fieldType": "index_timestamp"
+        },
+        {
+          "label": "Baseline",
+          "description": "Baseline indicator.",
+          "dataType": "integer",
+          "measurementType": "binary",
+          "fieldType": "baseline_indicator"
+        },
+        {
+          "label": "MyocardialInfarction",
+          "description": "Myocardial infarction event during the follow-up",
+          "dataType": "integer",
+          "measurementType": "binary",
+          "categories": [
+            {
+              "label": "no",
+              "code": 0
+            },
+            {
+              "label": "yes",
+              "code": 1
+            }
+          ],
+          "role": "target",
+          "missingValueCode": ""
+        },
+        {
+          "label": "Age",
+          "description": "Patient age in years at baseline.",
+          "dataType": "float",
+          "measurementType": "continuous",
+          "role": "feature",
+          "units": "a",
+          "missingValueCode": ""
+        }
+      ]
+    }
+  ]
+}

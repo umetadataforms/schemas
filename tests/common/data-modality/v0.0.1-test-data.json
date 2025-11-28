@@ -1,0 +1,8 @@
+{
+  "schema": "modular/common/data-modality/v0.0.1.json",
+  "data": [
+    "tabular",
+    "time series",
+    "image"
+  ]
+}

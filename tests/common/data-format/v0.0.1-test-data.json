@@ -1,0 +1,23 @@
+{
+  "schema": "modular/common/data-format/v0.0.1.json",
+  "data": [
+    {
+      "dataModality": "tabular",
+      "dataFormats": [
+        "TSV"
+      ]
+    },
+    {
+      "dataModality": "time series",
+      "dataFormats": [
+        "HDF5"
+      ]
+    },
+    {
+      "dataModality": "image",
+      "dataFormats": [
+        "DICOM"
+      ]
+    }
+  ]
+}

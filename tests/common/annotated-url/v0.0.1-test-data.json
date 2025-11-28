@@ -1,0 +1,14 @@
+{
+  "schema": "modular/common/annotated-url/v0.0.1.json",
+  "data": [
+    {
+      "url": "https://ucum.org",
+      "title": "UCUM Units",
+      "description": "Measurement units defined by Unified Code for Units of Measure (UCUM)."
+    },
+    {
+      "url": "https://ucum.org",
+      "title": "UCUM Units"
+    }
+  ]
+}

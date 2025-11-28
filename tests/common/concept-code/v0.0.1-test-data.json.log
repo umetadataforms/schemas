@@ -1,0 +1,26 @@
+JSON Data Test Log
+
+Timestamp: 2025-11-28T20:38:38.676Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/projects/umetadataforms/schemas
+ Schema ref:     modular/common/concept-code/v0.0.1.json
+ Root schema:    ../../../modular/common/concept-code/v0.0.1.json
+ Test file:      ../../../tests/common/concept-code/v0.0.1-test-data.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/common/concept-code/v0.0.1.json
+ SHA256:         cee2ef81e651eee37998c71634dabeb90e2b38bed477af92dc2f001aa35db992
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Test File ====================================================================
+ Path:           ../../../tests/common/concept-code/v0.0.1-test-data.json
+ SHA256:         c514fcce5b442c46ab0f94af06c0f83c4ba968b442b05295a0d10e0ff77dd394
+ Repo commit:   (not a git repository)
+ Status:        unknown
+
+= Validation ===================================================================
+✔ data[0] is valid.
+✔ data[1] is valid.
+✔ data[2] is valid.

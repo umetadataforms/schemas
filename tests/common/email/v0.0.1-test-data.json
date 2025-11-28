@@ -1,0 +1,6 @@
+{
+  "schema": "modular/common/email/v0.0.1.json",
+  "data": [
+    "john.doe@email.com"
+  ]
+}

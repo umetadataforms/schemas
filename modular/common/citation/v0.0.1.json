@@ -1,0 +1,12 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/citation/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Citation",
+  "description": "A citation formatted in American Medical Association (AMA) 11th edition style. *Maximum length*: 512 characters. Refer to https://www.amamanualofstyle.com/ for official guidelines.",
+  "type": "string",
+  "maxLength": 512,
+  "examples": [
+    "Wagner P, Strodthoff N, Bousseljot RD, et al. PTB-XL, a large publicly available electrocardiography dataset. Sci Data. 2020;7(1):154. Published 2020 May 25. doi:10.1038/s41597-020-0495-6",
+    "Strodthoff N, Mehari T, Nagel C, et al. PTB-XL+, a comprehensive electrocardiographic feature dataset. Sci Data. 2023;10(1):279. Published 2023 May 13. doi:10.1038/s41597-023-02153-8"
+  ]
+}

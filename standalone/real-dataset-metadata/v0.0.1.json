@@ -1,0 +1,1833 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/standalone/real-dataset-metadata/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Real Dataset Metadata",
+  "description": "Dataset description for datasets containing data from real subjects only.\n\nThis form provides a structured metadata framework for detailed and comprehensive description of a health dataset to support decisions about its suitability for specific analytical and modelling purposes, its compatibility with other datasets, and its compliance with legal and ethical requirements. The form is designed to capture the information necessary to understand the clinical context, cohort selection, and the collection or mining, quantification, and processing of the underlying data.\n\nComplete all applicable fields based on available documentation and knowledge of the dataset. Use rich text formatting where needed; the raw text will be stored in HTML format.\n\nEach form field is accompanied by a structured description:\n- required fields are marked with a red start before their label.\n- summary sentence — a single, clear sentence that defines what the field is,\n- use — explanation of how the provided information could be used,\n- guidelines — specific instructions on how to fill in the field correctly, where needed,\n- constraints — character or list size limits, where relevant,\n- missing information — clarification of missing and not applicable cases, where needed,\n- examples — |-separated field content examples, provided only if the examples are short.\n",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "title": "Schema URI",
+      "description": "Unique Resource Identifier (URI) for the schema that defines the structure of this metadata record.\n\n**Use**: Used for automated content validation.\n\n**Guidelines**: Use the appropriate type and version of the required schema.",
+      "type": "string",
+      "const": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.1.json"
+    },
+    "label": {
+      "title": "Label",
+      "description": "A short, user-friendly identifier for the dataset.\n\n**Use**: Used as a user-friendly substitute for abstract identifiers in interfaces, logs, and references.\n\n**Guidelines**: Use a stable, known dataset label if possible.\n\n**Constraints**: Must contain only letters, numbers, periods, underscores, or hyphens. *Length*: 3–75 characters.\n\n**Examples**: `ds003844` | `PTB-XL` ",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+$",
+      "minLength": 3,
+      "maxLength": 75
+    },
+    "version": {
+      "title": "Version",
+      "description": "The identifier of the dataset version.\n\n**Use**: Used to distinguish different versions of the dataset.\n\n**Guidelines**: Set to Unknown – `null`, if the version is unknown.\n\n**Constraints**: Must contain only letters, numbers, periods, underscores, or hyphens; avoid spaces or special characters. *Length*: 1–75 characters.\n\n**Examples**: `v1` | `v1.1` | `v20251012`",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+$",
+          "minLength": 1,
+          "maxLength": 75
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "versionDate": {
+      "title": "Version Date",
+      "description": "The date on which this version of the dataset was released or last updated.\n\n**Use**: Used to track dataset update history and support version control.\n\n**Guidelines**: Set to Unknown – `null`, if the version date is unknown.",
+      "oneOf": [
+        {
+          "title": "Date",
+          "description": "A date string formatted as YYYY-MM-DD according to ISO 8601. Restricted to years 1900–2099. *Example*: 2020-12-31",
+          "type": "string",
+          "pattern": "^((19[0-9]{2})|(20[0-9]{2}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+          "format": "date",
+          "examples": [
+            "2025-03-25"
+          ]
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "versionInfo": {
+      "title": "Version Information",
+      "description": "Information about the current version of the dataset.\n\n**Use**: Used to assess changes to the dataset.\n\n**Guidelines**: Clearly describe what has changed compared with the previous version of the dataset. This may include updates to data records, file formats, or annotations. Set to Unknown – `null`, if the version information is unknown.\n\n**Constraints**: *Maximum length*: 5,000 characters.",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "title": {
+      "title": "Title",
+      "description": "A short, descriptive, user-friendly dataset title, with each main word capitalised.\n\n**Use**: Displayed as a header in dataset descriptions and tooltips.\n\n**Guidelines**: Use specific, meaningful keywords to indicate what the dataset is about at a glance.\n\n**Constraints**: *Maximum length*: 255 characters.\n\n**Example**: `Pan-European Dataset on Myocardial Infarction`",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "summary": {
+      "title": "Summary",
+      "description": "A concise overview of the dataset, similar to an abstract in a journal article.\n\n**Use**: Used in dataset preview and search results.\n\n**Guidelines**: Questions to consider: What does the dataset contain? Why was it collected? Who collected it? Where was it collected? Under what conditions was it collected? What are the unique or noteworthy aspects? \n\n*Recommended length*: 500–1,500 characters.\n\n**Constraints**: *Maximum length*: 3,000 characters.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 3000
+    },
+    "purpose": {
+      "title": "Purpose",
+      "description": "A detailed explanation of the purpose for which the dataset was created.\n\n**Use**: Used to assess the dataset’s intended purpose, underlying motivation, and potential biases.\n\n**Guidelines**: Clearly describe the primary research question, specific modelling task, clinical application, or scientific objective that drove the creation of the dataset. Set to Unknown – `null`, if the purpose is unknown.\n\n**Constraints**: *Maximum length*: 5,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "baseline": {
+      "title": "Baseline",
+      "description": "A detailed description of the baseline definition.\n\n**Use**: Used to assess dataset compatibility, cohort alignment across datasets, and suitability for specific analytical tasks.\n\n**Guidelines**: Clearly describe the temporal anchor or clinical event used as the baseline for data collection. Set to Unknown – `null`, if the baseline is not well-defined or unknown.\n\n**Constraints**: *Maximum length*: 5,000 characters.",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "inclusionCriteria": {
+      "title": "Inclusion Criteria",
+      "description": "A detailed description of the criteria used to determine which subjects were eligible for inclusion in the dataset.\n\n**Use**: Used to evaluate the relevance and representativeness of the dataset, and potential subject selection biases.\n\n**Guidelines**: Clearly state the demographic, clinical, temporal, or procedural conditions that subjects had to meet to be included in the dataset. Report the criteria as they were applied during data collection or derivation. Set to Unknown – `null`, if the criteria were unknown, or state known criteria within the text and mention that there might be other unknown criteria applied when selecting subjects.\n\n**Constraints**: *Maximum length*: 10,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "exclusionCriteria": {
+      "title": "Exclusion Criteria",
+      "description": "A detailed description of the criteria that were used to exclude subjects from the dataset.\n\n**Use**: Used to evaluate the relevance and representativeness of the dataset, and potential subject selection biases.\n\n**Guidelines**: Describe the clinical, demographic, temporal, or procedural conditions that led to the exclusion of subjects from the dataset.  Report the criteria as they were applied during data collection or derivation. Set to Unknown – `null`, if the criteria were unknown, or state known criteria within the text and mention that there might be other unknown criteria applied when excluding subjects.\n\n**Constraints**: *Maximum length*: 10,000 characters.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "targets": {
+      "title": "Targets Description",
+      "description": "A description of the target outcomes or endpoints the dataset was designed to predict or analyse.\n\n**Use**: Used to determine the analytical or predictive focus of the dataset and assess its suitability for specific analytical tasks and compatibility with other datasets.\n\n**Guidelines**: Describe the clinical outcomes represented in the dataset. Specify how these targets are defined and captured in the data. Set to Unknown – `null`, if targets are unknown.\n\n**Constraints**: *Maximum length*: 5,000 characters.",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "studyDesign": {
+      "title": "Study Design",
+      "description": "A description of the study design or data collection framework.\n\n**Use**: Used to assess the methodological context in which the data were generated and determine its fitness for various analytic purposes.\n\n**Guidelines**: State the type of study or data source (e.g., retrospective observational study, case-control study, randomised controlled trial). Describe key structural features such as prospective vs. retrospective design, presence or absence of control groups, and whether the data were collected through an observational or interventional approach. Set to Unknown – `null`, if the study design is unknown.\n\n**Constraints**: *Maximum length*: 5,000 characters.",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "temporalCoverage": {
+      "title": "Temporal Coverage",
+      "description": "The period during which the data in the dataset were collected.\n\n**Use**: Used to determine the relevance and currency of the dataset for calendar time-sensitive analyses.\n\n**Guidelines**: Specify the start and end dates of the temporal coverage of the dataset. If either date is unknown, set it to Unknown – `null`.\n",
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "title": "Start Date",
+          "oneOf": [
+            {
+              "title": "Date",
+              "description": "A date string formatted as YYYY-MM-DD according to ISO 8601. Restricted to years 1900–2099. *Example*: 2020-12-31",
+              "type": "string",
+              "pattern": "^((19[0-9]{2})|(20[0-9]{2}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+              "format": "date",
+              "examples": [
+                "2025-03-25"
+              ]
+            },
+            {
+              "title": "Unknown",
+              "description": "Unknown, missing information. Field set to `null`.",
+              "type": "null"
+            }
+          ]
+        },
+        "endDate": {
+          "title": "End Date",
+          "oneOf": [
+            {
+              "title": "Date",
+              "description": "A date string formatted as YYYY-MM-DD according to ISO 8601. Restricted to years 1900–2099. *Example*: 2020-12-31",
+              "type": "string",
+              "pattern": "^((19[0-9]{2})|(20[0-9]{2}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+              "format": "date",
+              "examples": [
+                "2025-03-25"
+              ]
+            },
+            {
+              "title": "Unknown",
+              "description": "Unknown, missing information. Field set to `null`.",
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "additionalProperties": false,
+      "examples": [
+        {
+          "startDate": "2010-01-01",
+          "endDate": "2020-12-31"
+        },
+        {
+          "startDate": null,
+          "endDate": "2020-12-31"
+        }
+      ]
+    },
+    "geographicCoverage": {
+      "title": "Geographic Coverage",
+      "description": "The geographic areas from which the dataset’s subject population originates.\n\n**Use**: Used to assess the geographic representativeness of the dataset and support location-based filtering, or bias analysis.\n\n**Guidelines**: List all countries represented in the dataset, and optionally include relevant states or provinces within each country. Limit the list to locations directly associated with data subjects, not institutions or data custodians. If needed, provide further information about the geographical coverage of the dataset. Set to Unknown – `null`, if the geographic coverage is unknown.\n\nThe geographic units data will be stored as ISO 3166-1 country and ISO 3166-2 country subdivision codes.\n\n**Constraints**: *Maximum length* of additional information: 10,000 characters. *Maximum number* of countries: 250. \n",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "geographicInfo": {
+              "title": "Geographic Information",
+              "description": "Additional information to clarify the dataset’s geographic scope.",
+              "type": "string",
+              "maxLength": 10000
+            },
+            "geographicAreas": {
+              "title": "Countries and Subdivisions",
+              "type": "array",
+              "items": {
+                "title": "Country Code and its Subdivision Codes",
+                "description": "An ISO 3166-1 country code and an optional list of its ISO 3166-2 subdivision codes. *Maximum number* of subdivision codes: 500.",
+                "type": "object",
+                "properties": {
+                  "countryCode": {
+                    "title": "Country Code",
+                    "description": "A country code as defined in ISO 3166-1.",
+                    "type": "string",
+                    "enum": [
+                      "AD",
+                      "AE",
+                      "AF",
+                      "AG",
+                      "AI",
+                      "AL",
+                      "AM",
+                      "AO",
+                      "AQ",
+                      "AR",
+                      "AS",
+                      "AT",
+                      "AU",
+                      "AW",
+                      "AX",
+                      "AZ",
+                      "BA",
+                      "BB",
+                      "BD",
+                      "BE",
+                      "BF",
+                      "BG",
+                      "BH",
+                      "BI",
+                      "BJ",
+                      "BL",
+                      "BM",
+                      "BN",
+                      "BO",
+                      "BQ",
+                      "BR",
+                      "BS",
+                      "BT",
+                      "BV",
+                      "BW",
+                      "BY",
+                      "BZ",
+                      "CA",
+                      "CC",
+                      "CD",
+                      "CF",
+                      "CG",
+                      "CH",
+                      "CI",
+                      "CK",
+                      "CL",
+                      "CM",
+                      "CN",
+                      "CO",
+                      "CR",
+                      "CU",
+                      "CV",
+                      "CW",
+                      "CX",
+                      "CY",
+                      "CZ",
+                      "DE",
+                      "DJ",
+                      "DK",
+                      "DM",
+                      "DO",
+                      "DZ",
+                      "EC",
+                      "EE",
+                      "EG",
+                      "EH",
+                      "ER",
+                      "ES",
+                      "ET",
+                      "FI",
+                      "FJ",
+                      "FK",
+                      "FM",
+                      "FO",
+                      "FR",
+                      "GA",
+                      "GB",
+                      "GD",
+                      "GE",
+                      "GF",
+                      "GG",
+                      "GH",
+                      "GI",
+                      "GL",
+                      "GM",
+                      "GN",
+                      "GP",
+                      "GQ",
+                      "GR",
+                      "GS",
+                      "GT",
+                      "GU",
+                      "GW",
+                      "GY",
+                      "HK",
+                      "HM",
+                      "HN",
+                      "HR",
+                      "HT",
+                      "HU",
+                      "ID",
+                      "IE",
+                      "IL",
+                      "IM",
+                      "IN",
+                      "IO",
+                      "IQ",
+                      "IR",
+                      "IS",
+                      "IT",
+                      "JE",
+                      "JM",
+                      "JO",
+                      "JP",
+                      "KE",
+                      "KG",
+                      "KH",
+                      "KI",
+                      "KM",
+                      "KN",
+                      "KP",
+                      "KR",
+                      "KW",
+                      "KY",
+                      "KZ",
+                      "LA",
+                      "LB",
+                      "LC",
+                      "LI",
+                      "LK",
+                      "LR",
+                      "LS",
+                      "LT",
+                      "LU",
+                      "LV",
+                      "LY",
+                      "MA",
+                      "MC",
+                      "MD",
+                      "ME",
+                      "MF",
+                      "MG",
+                      "MH",
+                      "MK",
+                      "ML",
+                      "MM",
+                      "MN",
+                      "MO",
+                      "MP",
+                      "MQ",
+                      "MR",
+                      "MS",
+                      "MT",
+                      "MU",
+                      "MV",
+                      "MW",
+                      "MX",
+                      "MY",
+                      "MZ",
+                      "NA",
+                      "NC",
+                      "NE",
+                      "NF",
+                      "NG",
+                      "NI",
+                      "NL",
+                      "NO",
+                      "NP",
+                      "NR",
+                      "NU",
+                      "NZ",
+                      "OM",
+                      "PA",
+                      "PE",
+                      "PF",
+                      "PG",
+                      "PH",
+                      "PK",
+                      "PL",
+                      "PM",
+                      "PN",
+                      "PR",
+                      "PS",
+                      "PT",
+                      "PW",
+                      "PY",
+                      "QA",
+                      "RE",
+                      "RO",
+                      "RS",
+                      "RU",
+                      "RW",
+                      "SA",
+                      "SB",
+                      "SC",
+                      "SD",
+                      "SE",
+                      "SG",
+                      "SH",
+                      "SI",
+                      "SJ",
+                      "SK",
+                      "SL",
+                      "SM",
+                      "SN",
+                      "SO",
+                      "SR",
+                      "SS",
+                      "ST",
+                      "SV",
+                      "SX",
+                      "SY",
+                      "SZ",
+                      "TC",
+                      "TD",
+                      "TF",
+                      "TG",
+                      "TH",
+                      "TJ",
+                      "TK",
+                      "TL",
+                      "TM",
+                      "TN",
+                      "TO",
+                      "TR",
+                      "TT",
+                      "TV",
+                      "TW",
+                      "TZ",
+                      "UA",
+                      "UG",
+                      "UM",
+                      "US",
+                      "UY",
+                      "UZ",
+                      "VA",
+                      "VC",
+                      "VE",
+                      "VG",
+                      "VI",
+                      "VN",
+                      "VU",
+                      "WF",
+                      "WS",
+                      "YE",
+                      "YT",
+                      "ZA",
+                      "ZM",
+                      "ZW"
+                    ]
+                  },
+                  "countrySubdivisionCodes": {
+                    "title": "Country Subdivision Codes",
+                    "type": "array",
+                    "items": {
+                      "title": "Country Subdivision Code",
+                      "description": "A country subdivision code as defined in ISO 3166-2.",
+                      "type": "string",
+                      "pattern": "^[A-Z]{2}(?:-[A-Z0-9]{1,3})+$"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 500
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "countryCode"
+                ],
+                "examples": [
+                  {
+                    "countryCode": "ES",
+                    "countrySubdivisionCodes": [
+                      "ES-B",
+                      "ES-GI",
+                      "ES-L",
+                      "ES-T"
+                    ]
+                  },
+                  {
+                    "countryCode": "PT"
+                  }
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1,
+              "maxItems": 250
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "geographicAreas"
+          ]
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "dataSampling": {
+      "title": "Data Sampling",
+      "description": "Detailed description of the data sampling methods used to create the dataset.\n\n**Use**: Used to assess potential biases in the dataset arising from sampling strategies used.\n\n**Guidelines**: Define the target population from which data was drawn. Specify whether the dataset includes the entire population or a subset. Describe the sampling strategy (e.g., random, stratified). Explain how representativeness was assessed, if applicable (e.g., comparison to population statistics). If no formal sampling method was used, state this explicitly and explain how subjects were selected. Set to Unknown – `null`, if the data sampling information is unknown.\n\n**Constraints**: *Maximum length*: 10,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "acquisitionMethods": {
+      "title": "Data Acquisition Methods",
+      "description": "Description of the methods, techniques, or protocols used to acquire the data.\n\n**Use**: Used to evaluate data collection rigour, processes, and potential sources of variability or bias.\n\n**Guidelines**: Summarise the overarching data acquisition methodology, including tools, devices, sampling frequencies, and any data modality-specific techniques. Avoid describing data acquisition specific to variables in tabular data. The information here should apply to all data within a given data modality. Use headings to describe data acquisition for different data modalities (e.g., 'Tabular Data', 'Time Series Data', 'Image Data'). Where appropriate, use further subheadings for structured information such as 'Number of Channels' and 'Sampling Frequency'. Set to Unknown – `null`, if the data acquisition methods are unknown.\n\n**Constraints**: *Maximum length*: 10,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "annotationMethods": {
+      "title": "Data Annotation Methods",
+      "description": "\n\n**Use**: Used to evaluate annotation quality, consistency, and potential labelling bias.\n\n**Guidelines**: Describe how annotations were generated, including who performed them (e.g., clinicians, automated systems), what tools or software were used, and the procedures followed. Use separate headings for each data modality ('Time Series Data', 'Image Data') and subheadings as needed (e.g., 'Annotator Expertise', 'Annotation Tool').  This content should apply to all data within a given modality or large subsets of it. Avoid giving details for individual time series or image files. Set to Unknown – `null`, if the the information abut the annotation process is unknown. Set to Not Applicable – `not applicable`, if annotation information is not applicable to this dataset; for example, to tabular data.\n\n**Constraints**: *Maximum length*: 10,000 characters.",
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 10000
+        },
+        {
+          "title": "Not Applicable",
+          "description": "Marks a piece of information as not applicable.",
+          "type": "string",
+          "const": "not applicable"
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "limitations": {
+      "title": "Limitations",
+      "description": "Overview of known limitations, shortcomings or data quality issues of the dataset.\n\n**Use**: Used to assess dataset suitability, identify potential risks, and understand bias or data quality issues.\n\n**Guidelines**: Clearly describe issues such as sampling bias, missing data, limited population representation, or potential inaccuracies. Include any constraints on generalisability or known data quality concerns. Set to Unknown – `null`, if the limitations are unknown.\n\n**Constraints**: *Maximum length*: 10,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "dataPreprocessing": {
+      "title": "Data Preprocessing",
+      "description": "Description of data preprocessing steps applied to the data in the dataset.\n\n**Use**: Used to understand how the data were transformed. Supports reproducibility, integration with other datasets, and downstream modeling decisions.\n\n**Guidelines**: Summarise data preprocessing steps such as normalisation, filtering, or transformation. Specify tools or software used where relevant. If needed, use clear headings (e.g., 'Tabular Data', 'Time Series Data', 'Image Data'). Set to Unknown – `null`, if data preprocessing information is unknown.\n\n**Constraints**: *Maximum length*: 10,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "healthcareSettings": {
+      "title": "Healthcare Settings",
+      "description": "List of healthcare settings where the data were collected.\n\n**Use**: Used to assess the clinical context associated with the dataset.\n\n**Guidelines**: Select one or more terms that describe the level or type of care setting (e.g., 'primary care', 'secondary care'). Use only predefined terms when applicable. Set to Unknown – `null`, if the healthcare setting is unknown.\n\n**Constraints**:  If providing custom entries, ensure they are concise and use only letters, numbers, spaces, or hyphens. *Maximum length* per setting: 255 characters. *Maximum number* of settings: 30.\n\n",
+      "oneOf": [
+        {
+          "title": "List of Settings",
+          "type": "array",
+          "items": {
+            "maxLength": 255,
+            "anyOf": [
+              {
+                "title": "Select Setting",
+                "description": "Standard healthcare setting term.",
+                "type": "string",
+                "enum": [
+                  "primary care",
+                  "secondary care",
+                  "tertiary care",
+                  "quaternary care",
+                  "ambulatory care",
+                  "palliative care",
+                  "home care"
+                ]
+              },
+              {
+                "title": "Custom Setting",
+                "description": "Custom healthcare setting term.",
+                "type": "string",
+                "pattern": "^[A-Za-z0-9 -]+$"
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 30
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "patientNum": {
+      "title": "Number of Patients",
+      "description": "Total number of unique patients represented in the dataset.\n\n**Use**: Used to assess dataset scale, statistical power, and suitability for specific analytical tasks.\n\n**Guidelines**: Provide an exact number, ≥ 0, of distinct patients in the dataset. This value should match the actual data files and reflect the number of subjects whose records are included.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "dataSources": {
+      "title": "Dataset Sources",
+      "description": "List of URL links to external data sources used in obtaining the data.\n\n**Use**: Supports data provenance tracking, transparency of dataset composition, and verification of source material and fidelity to the source.\n\n**Guidelines**: Provide valid, accessible URL links pointing to original data or resources integrated into this dataset. Ensure that each link is active and publicly accessible at the time of preparing this content. Set the field to Unknown – `null`, if external data sources exists but could not be accessed or provided.\n\n**Constraints**: No duplicates. *Maximum number*: 1,000.\n",
+      "oneOf": [
+        {
+          "title": "List of URL Links",
+          "type": "array",
+          "items": {
+            "title": "URL Link",
+            "description": "Uniform Resource Locator (URL) with optional title and description.",
+            "type": "object",
+            "properties": {
+              "url": {
+                "title": "Link",
+                "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator). *Maximum length*: 2,048 characters.",
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https?://.+$",
+                "maxLength": 2048,
+                "examples": [
+                  "http://example.org/",
+                  "https://example.org/"
+                ]
+              },
+              "title": {
+                "title": "Title",
+                "description": "A short, descriptive, user-friendly URL title, with each main word capitalised. Used in interfaces for display purposes instead of the actual URL link. Use specific, meaningful keywords to indicate what the URL is about at a glance. *Maximum length*: 255 characters.",
+                "type": "string",
+                "maxLength": 255
+              },
+              "description": {
+                "title": "Description",
+                "description": "A brief description of the URL's content. Be clear and concise. *Maximum length*: 1,500 characters.",
+                "type": "string",
+                "maxLength": 1500
+              }
+            },
+            "required": [
+              "url",
+              "title"
+            ],
+            "additionalProperties": false,
+            "examples": [
+              {
+                "url": "https://ucum.org",
+                "title": "UCUM Units",
+                "description": "Measurement units defined by Unified Code for Units of Measure (UCUM)."
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 1000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "additionalDocumentation": {
+      "title": "Additional Documentation",
+      "description": "Links or file paths to additional documentation related to the dataset.\n\n**Use**: Enables providing custom, extended context for the dataset to support data interpretation.\n\n**Guidelines**: Provide valid URL links or file paths for supplementary materials such as clinical code sets for variable construction or phenotyping, protocols, reports, or user guides. Ensure that the URL links are publicly accessible and file paths refer to included documents. Set the field to Unknown – `null`, if additional documentation besides what has been provided exists but could not be accessed or provided.\n\n**Constraints**: No duplicates. *Maximum number of items*: 1000.\n",
+      "oneOf": [
+        {
+          "title": "List of Resources",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "title": "URL Link",
+                "description": "Uniform Resource Locator (URL) with optional title and description.",
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "title": "Link",
+                    "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator). *Maximum length*: 2,048 characters.",
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https?://.+$",
+                    "maxLength": 2048,
+                    "examples": [
+                      "http://example.org/",
+                      "https://example.org/"
+                    ]
+                  },
+                  "title": {
+                    "title": "Title",
+                    "description": "A short, descriptive, user-friendly URL title, with each main word capitalised. Used in interfaces for display purposes instead of the actual URL link. Use specific, meaningful keywords to indicate what the URL is about at a glance. *Maximum length*: 255 characters.",
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "description": {
+                    "title": "Description",
+                    "description": "A brief description of the URL's content. Be clear and concise. *Maximum length*: 1,500 characters.",
+                    "type": "string",
+                    "maxLength": 1500
+                  }
+                },
+                "required": [
+                  "url",
+                  "title"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "url": "https://ucum.org",
+                    "title": "UCUM Units",
+                    "description": "Measurement units defined by Unified Code for Units of Measure (UCUM)."
+                  }
+                ]
+              },
+              {
+                "title": "File",
+                "description": "A file path with format, checksum, and optional title and description.",
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "title": "Path",
+                    "description": "A relative file or directory path from the root directory. Must include only letters, numbers, underscores, hyphens, forward slashes, or periods. Parent directory references (../) are not allowed. *Maximum length*: 255 characters.",
+                    "type": "string",
+                    "maxLength": 1024,
+                    "pattern": "^(?!\\.\\.\\/)[A-Za-z0-9._\\/-]+$",
+                    "examples": [
+                      "baseline-data.tsv",
+                      "data/image-id1.png",
+                      "time-series/ecg/subject-0001/record-001.dat"
+                    ]
+                  },
+                  "format": {
+                    "title": "Format",
+                    "description": "The file's format such as PDF, TSV etc., or user-specified format. Must contain only letters, numbers, hyphens or underscores. *Length*: 1-30 characters.",
+                    "maxLength": 30,
+                    "anyOf": [
+                      {
+                        "title": "Select Format",
+                        "type": "string",
+                        "enum": [
+                          "TXT",
+                          "CSV",
+                          "TSV",
+                          "H5",
+                          "PDF",
+                          "DOCX",
+                          "Markdown",
+                          "JSON",
+                          "XML"
+                        ]
+                      },
+                      {
+                        "title": "Enter Format",
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]+$"
+                      }
+                    ]
+                  },
+                  "sha256": {
+                    "title": "SHA256 Checksum",
+                    "description": "The SHA256 checksum of the file.",
+                    "type": "string",
+                    "pattern": "^[A-Fa-f0-9]{64}$",
+                    "examples": [
+                      "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090",
+                      "971172E9A6DB5D7C0AFC980598FEA4AD63C5862327888EE7A42954FD31EBA090"
+                    ]
+                  },
+                  "title": {
+                    "title": "Title",
+                    "description": "A short, descriptive, user-friendly file title, with each word capitalised. *Maximum length*: 255 characters.",
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "description": {
+                    "title": "Description",
+                    "description": "A brief description of the file's contents. *Maximum length*: 5,000 characters.",
+                    "type": "string",
+                    "maxLength": 5000
+                  }
+                },
+                "required": [
+                  "path",
+                  "format"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "path": "resources/data-quality-issues.pdf",
+                    "format": "PDF",
+                    "title": "Data Quality Issues",
+                    "description": "Known data quality issues in the dataset.",
+                    "sha256": "971172e9a6db5d7c0afc980598fea4ad63c5862327888ee7a42954fd31eba090"
+                  },
+                  {
+                    "path": "resources/codes/snomed-ct-codes.csv",
+                    "format": "TSV",
+                    "description": "SNOMED CT codes used to construct the variables in the dataset.",
+                    "sha256": "d2f4a0a986ce276567f1ab3424f804390ed15b82f3b8dbbfe1715d9dc5e8fa4c"
+                  }
+                ]
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 1000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "dataModalities": {
+      "title": "Data Modalities",
+      "description": "List of data modalities in the dataset.\n\n**Use**: Used for modality-specific data handling, display, search, and validation.\n\n**Guidelines**: Select one or more of the pre-specified data modalities.",
+      "type": "array",
+      "items": {
+        "title": "Data Modality",
+        "description": "Recognised data modality term.",
+        "type": "string",
+        "enum": [
+          "tabular",
+          "time series",
+          "image"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "dataFormats": {
+      "title": "Data Formats",
+      "description": "Data format(s) used for each data modality in the dataset.\n\n**Use**: Used for correct parsing, validation, and modality-specific handling of dataset files.\n\n**Guidelines**: For each data modality listed in **Data Modalities**, specify one or more corresponding data formats from the predefined list. Use only valid combinations based on supported formats.",
+      "type": "array",
+      "items": {
+        "title": "Data Format",
+        "description": "A recognised data format associated with a given recognised data modality.",
+        "anyOf": [
+          {
+            "title": "Tabular Data",
+            "type": "object",
+            "properties": {
+              "dataModality": {
+                "description": "Cross-sectional, repeated measurements, or longitudinal tabular data.",
+                "const": "tabular"
+              },
+              "dataFormats": {
+                "title": "Data Format",
+                "description": "TSV -- tab-delimited, CSV -- comma-separated flat text files. Note, if some columns in the tabular data contain either tabs or commas, they should be surrounded with double quotes.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "TSV",
+                    "CSV"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "dataModality",
+              "dataFormats"
+            ]
+          },
+          {
+            "title": "Time Series",
+            "type": "object",
+            "properties": {
+              "dataModality": {
+                "description": "Time series data.",
+                "const": "time series"
+              },
+              "dataFormats": {
+                "title": "Data Format",
+                "description": "WFDB -- waveform database format for ECG data. iEEG-BIDS -- BIDS format for iEEG data, and BIDS format for other similar data. HDF5 -- Hierarchical Data Format Version 5, or TSV -- tab-delimited or CSV -- comma-separated files for other time series datasets.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "WFDB",
+                    "iEEG-BIDS",
+                    "BIDS",
+                    "HDF5",
+                    "TSV",
+                    "CSV"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "dataModality",
+              "dataFormats"
+            ]
+          },
+          {
+            "title": "Images",
+            "type": "object",
+            "properties": {
+              "dataModality": {
+                "description": "Image data.",
+                "const": "image"
+              },
+              "dataFormats": {
+                "title": "Data Format",
+                "description": "DICOM -- Digital Imaging and Communications in Medicine format, PNG, JPG or JPEG.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "DICOM",
+                    "PNG",
+                    "JPG",
+                    "JPEG"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "dataModality",
+              "dataFormats"
+            ]
+          }
+        ],
+        "examples": [
+          [
+            {
+              "dataModality": "tabular",
+              "dataFormats": [
+                "TSV"
+              ]
+            },
+            {
+              "dataModality": "time series",
+              "dataFormats": [
+                "HDF5"
+              ]
+            }
+          ]
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "privacyCompliance": {
+      "title": "Privacy Compliance",
+      "description": "Description of how the dataset complies with data anonymisation or de-identification requirements.\n\n**Use**: Used to evaluate legal and ethical uses of the data.\n\n**Guidelines**: Clearly state the methods, standards, or frameworks used for anonymisation or de-identification of the data. Describe any risk assessments or techniques applied to ensure privacy protection. Use headings and subheadings for structuring the information as needed. Set to Unknown – `null`, if the privacy compliance information is unknown.\n\n**Constraints**: *Maximum length*: 10,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "ethicsApproval": {
+      "title": "Ethics Approvals",
+      "description": "List of ethics approvals relevant to the dataset.\n\n**Use**: Used to evaluate legal and ethical uses of the data.\n\n**Guidelines**: For each approval, indicate whether ethics approval was obtained. If obtained, provide the approval date, the name of the approving authority, the approval number, and a summary of approval details. Ensure the details refer to approvals specifically covering the data collection or use. Set to Unknown – `null`, if the ethics approval information is unknown. Set **Approval Status** to `not required`, if ethics approval was not required.",
+      "oneOf": [
+        {
+          "title": "List of Approvals",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "approvalStatus": {
+                "title": "Approval Status",
+                "description": "Ethics approval status.",
+                "type": "string",
+                "enum": [
+                  "approved",
+                  "not approved",
+                  "not required"
+                ]
+              },
+              "approvalDate": {
+                "title": "Date",
+                "description": "A date string formatted as YYYY-MM-DD according to ISO 8601. Restricted to years 1900–2099. *Example*: 2020-12-31",
+                "type": "string",
+                "pattern": "^((19[0-9]{2})|(20[0-9]{2}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                "format": "date",
+                "examples": [
+                  "2025-03-25"
+                ]
+              },
+              "approvalAuthority": {
+                "title": "Approval Authority",
+                "description": "*Maximum length*: 5,000 characters.",
+                "type": "string",
+                "maxLength": 5000
+              },
+              "approvalNumber": {
+                "title": "Approval Number",
+                "description": "*Maximum length*: 255 characters.",
+                "type": "string",
+                "maxLength": 255
+              },
+              "approvalDetails": {
+                "title": "Approval Details",
+                "description": "*Maximum length*: 10,000 characters.",
+                "type": "string",
+                "maxLength": 10000
+              }
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "approvalStatus": {
+                      "const": "approved"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "approvalDate",
+                    "approvalAuthority",
+                    "approvalNumber",
+                    "approvalDetails"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "patientConsent": {
+      "title": "Patient Consent",
+      "description": "Description of how patient consent was obtained for data collection, use, or sharing.\n\n**Use**: Used to assess compliance with data protection regulations and ethical uses of the dataset.\n\n**Guidelines**: Clearly state whether and how consent was obtained, including the type, and any relevant constraints on data use and sharing. If consent was not required, explain why. Use headings and subheadings to structure information if multiple consent types or cohorts are involved. If patient consent was not required, state that it was not required, and explain why. Set to Unknown – `null`, if the information about patient consent is unknown.\n\n**Constraints**: *Maximum length*: 10,000 characters.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "acknowledgements": {
+      "title": "Acknowledgements",
+      "description": "Acknowledgements of individuals or organisations that contributed to the creation of the dataset.\n\n**Use**: Provides recognition of contributors and context for dataset provenance.\n\n**Guidelines**: List contributors who supported data collection, preparation, or validation. Include affiliations where relevant.\n\n**Constraints**: *Maximum length*: 5,000 characters.\n",
+      "type": "string",
+      "maxLength": 5000
+    },
+    "funding": {
+      "title": "Funding Information",
+      "description": "Information about funding provided for creating the dataset.\n\n**Use**: Used to assess transparency, attribution, and potential conflicts of interest or funding-related bias.\n\n**Guidelines**: Specify the funding sources, including project names, grant numbers, and funding agencies where applicable. Include relevant programme names and institutional affiliations.\n\n**Constraints**: *Maximum length*: 5,000 characters.\n",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "owners": {
+      "title": "Owners",
+      "description": "List of legal owners of the dataset.\n\n**Use**: Used to establish legal ownership and accountability for the dataset, supporting licensing, governance, and attribution.\n\n**Guidelines**: Provide one or more organisations that legally own the dataset. For each entry, include at minimum the organisation name. Where available, also include website, country, address, and a contact point (e.g., phone number or email). Ensure each organisation is unique in the list. Set to Unknown – `null`, if the owners are unknown.\n\n**Constraints**: *Maximum number of items*: 100.",
+      "oneOf": [
+        {
+          "title": "List of Owners",
+          "type": "array",
+          "items": {
+            "title": "Owner",
+            "description": "General information about the owner organisation/entity.",
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "description": "The official name of the organisation. *Maximum length*: 510 characters.",
+                "type": "string",
+                "maxLength": 510
+              },
+              "website": {
+                "title": "Website",
+                "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator). *Maximum length*: 2,048 characters.",
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https?://.+$",
+                "maxLength": 2048,
+                "examples": [
+                  "http://example.org/",
+                  "https://example.org/"
+                ]
+              },
+              "country": {
+                "title": "Country Code",
+                "description": "A country code as defined in ISO 3166-1.",
+                "type": "string",
+                "enum": [
+                  "AD",
+                  "AE",
+                  "AF",
+                  "AG",
+                  "AI",
+                  "AL",
+                  "AM",
+                  "AO",
+                  "AQ",
+                  "AR",
+                  "AS",
+                  "AT",
+                  "AU",
+                  "AW",
+                  "AX",
+                  "AZ",
+                  "BA",
+                  "BB",
+                  "BD",
+                  "BE",
+                  "BF",
+                  "BG",
+                  "BH",
+                  "BI",
+                  "BJ",
+                  "BL",
+                  "BM",
+                  "BN",
+                  "BO",
+                  "BQ",
+                  "BR",
+                  "BS",
+                  "BT",
+                  "BV",
+                  "BW",
+                  "BY",
+                  "BZ",
+                  "CA",
+                  "CC",
+                  "CD",
+                  "CF",
+                  "CG",
+                  "CH",
+                  "CI",
+                  "CK",
+                  "CL",
+                  "CM",
+                  "CN",
+                  "CO",
+                  "CR",
+                  "CU",
+                  "CV",
+                  "CW",
+                  "CX",
+                  "CY",
+                  "CZ",
+                  "DE",
+                  "DJ",
+                  "DK",
+                  "DM",
+                  "DO",
+                  "DZ",
+                  "EC",
+                  "EE",
+                  "EG",
+                  "EH",
+                  "ER",
+                  "ES",
+                  "ET",
+                  "FI",
+                  "FJ",
+                  "FK",
+                  "FM",
+                  "FO",
+                  "FR",
+                  "GA",
+                  "GB",
+                  "GD",
+                  "GE",
+                  "GF",
+                  "GG",
+                  "GH",
+                  "GI",
+                  "GL",
+                  "GM",
+                  "GN",
+                  "GP",
+                  "GQ",
+                  "GR",
+                  "GS",
+                  "GT",
+                  "GU",
+                  "GW",
+                  "GY",
+                  "HK",
+                  "HM",
+                  "HN",
+                  "HR",
+                  "HT",
+                  "HU",
+                  "ID",
+                  "IE",
+                  "IL",
+                  "IM",
+                  "IN",
+                  "IO",
+                  "IQ",
+                  "IR",
+                  "IS",
+                  "IT",
+                  "JE",
+                  "JM",
+                  "JO",
+                  "JP",
+                  "KE",
+                  "KG",
+                  "KH",
+                  "KI",
+                  "KM",
+                  "KN",
+                  "KP",
+                  "KR",
+                  "KW",
+                  "KY",
+                  "KZ",
+                  "LA",
+                  "LB",
+                  "LC",
+                  "LI",
+                  "LK",
+                  "LR",
+                  "LS",
+                  "LT",
+                  "LU",
+                  "LV",
+                  "LY",
+                  "MA",
+                  "MC",
+                  "MD",
+                  "ME",
+                  "MF",
+                  "MG",
+                  "MH",
+                  "MK",
+                  "ML",
+                  "MM",
+                  "MN",
+                  "MO",
+                  "MP",
+                  "MQ",
+                  "MR",
+                  "MS",
+                  "MT",
+                  "MU",
+                  "MV",
+                  "MW",
+                  "MX",
+                  "MY",
+                  "MZ",
+                  "NA",
+                  "NC",
+                  "NE",
+                  "NF",
+                  "NG",
+                  "NI",
+                  "NL",
+                  "NO",
+                  "NP",
+                  "NR",
+                  "NU",
+                  "NZ",
+                  "OM",
+                  "PA",
+                  "PE",
+                  "PF",
+                  "PG",
+                  "PH",
+                  "PK",
+                  "PL",
+                  "PM",
+                  "PN",
+                  "PR",
+                  "PS",
+                  "PT",
+                  "PW",
+                  "PY",
+                  "QA",
+                  "RE",
+                  "RO",
+                  "RS",
+                  "RU",
+                  "RW",
+                  "SA",
+                  "SB",
+                  "SC",
+                  "SD",
+                  "SE",
+                  "SG",
+                  "SH",
+                  "SI",
+                  "SJ",
+                  "SK",
+                  "SL",
+                  "SM",
+                  "SN",
+                  "SO",
+                  "SR",
+                  "SS",
+                  "ST",
+                  "SV",
+                  "SX",
+                  "SY",
+                  "SZ",
+                  "TC",
+                  "TD",
+                  "TF",
+                  "TG",
+                  "TH",
+                  "TJ",
+                  "TK",
+                  "TL",
+                  "TM",
+                  "TN",
+                  "TO",
+                  "TR",
+                  "TT",
+                  "TV",
+                  "TW",
+                  "TZ",
+                  "UA",
+                  "UG",
+                  "UM",
+                  "US",
+                  "UY",
+                  "UZ",
+                  "VA",
+                  "VC",
+                  "VE",
+                  "VG",
+                  "VI",
+                  "VN",
+                  "VU",
+                  "WF",
+                  "WS",
+                  "YE",
+                  "YT",
+                  "ZA",
+                  "ZM",
+                  "ZW"
+                ]
+              },
+              "address": {
+                "title": "Address",
+                "description": "The address of the organisation. *Maximum length*: 1,024 characters.",
+                "type": "string",
+                "maxLength": 1024
+              },
+              "contactDetails": {
+                "title": "Contact Details",
+                "anyOf": [
+                  {
+                    "title": "Email/Telephone",
+                    "description": "An email address and/or a telephone number for the organisation.",
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "title": "Email",
+                        "description": "An email address as defined by RFC 5321. *Maximum length*: 255 characters.",
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255,
+                        "examples": [
+                          "john.doe@email.com"
+                        ]
+                      },
+                      "telephone": {
+                        "title": "Telephone",
+                        "description": "A telephone number in E.164 format. Must start with '+' followed by a country code and digits, with no whitespace or separators. *Maximum length*: 16 characters. *Example*: +442075895111",
+                        "type": "string",
+                        "pattern": "^\\+[1-9]\\d{1,14}$",
+                        "maxLength": 16,
+                        "examples": [
+                          "+442075895111"
+                        ]
+                      },
+                      "comments": {
+                        "title": "Additional Comments",
+                        "description": "Additional comments about how to make contact. *Maximum length*: 5000 characters.",
+                        "type": "string",
+                        "maxLength": 50000
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "title": "Contact People",
+                    "description": "A list of contact people for the organisation.",
+                    "type": "array",
+                    "items": {
+                      "title": "Contact Person",
+                      "description": "A contact person for an organisation.",
+                      "type": "object",
+                      "properties": {
+                        "firstName": {
+                          "title": "First Name",
+                          "description": "First name. Only letters, digits, spaces, and hyphens are allowed. *Maximum length*: 255 characters.",
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9 -]+$",
+                          "maxLength": 255
+                        },
+                        "lastName": {
+                          "title": "Last Name",
+                          "description": "Last name. Only letters, digits, spaces, and hyphens are allowed. *Maximum length*: 255 characters.",
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9 -]+$",
+                          "maxLength": 255
+                        },
+                        "role": {
+                          "title": "Role",
+                          "description": "The contact person's role in the organisation. *Maximum length*: 255 characters.",
+                          "type": "string",
+                          "maxLength": 255
+                        },
+                        "email": {
+                          "title": "Email",
+                          "description": "An email address as defined by RFC 5321. *Maximum length*: 255 characters.",
+                          "type": "string",
+                          "format": "email",
+                          "maxLength": 255,
+                          "examples": [
+                            "john.doe@email.com"
+                          ]
+                        },
+                        "telephone": {
+                          "title": "Telephone",
+                          "description": "A telephone number in E.164 format. Must start with '+' followed by a country code and digits, with no whitespace or separators. *Maximum length*: 16 characters. *Example*: +442075895111",
+                          "type": "string",
+                          "pattern": "^\\+[1-9]\\d{1,14}$",
+                          "maxLength": 16,
+                          "examples": [
+                            "+442075895111"
+                          ]
+                        },
+                        "comments": {
+                          "title": "Additional Comments",
+                          "description": "Additional comments about how to make contact. *Maximum length*: 5000 characters.",
+                          "type": "string",
+                          "maxLength": 5000
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "firstName",
+                        "lastName"
+                      ],
+                      "examples": [
+                        {
+                          "firstName": "John",
+                          "lastName": "Doe",
+                          "role": "Data Manager",
+                          "email": "john.doe@email.com",
+                          "telephone": "+12345678901",
+                          "comments": "Prefer to be contacted by email."
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "contactDetails"
+            ],
+            "exampels": [
+              {
+                "name": "John Doe University Hospital NHS Trust",
+                "website": "https://john-doe-hospital.example.nhs.uk",
+                "country": "GB",
+                "address": "Cardiology Research Unit, John Doe Hospital, London W0 0AA, United Kingdom",
+                "contactDetails": {
+                  "email": "data-access@john-doe-hospital.example.nhs.uk",
+                  "telephone": "+442000000000",
+                  "comments": "For dataset access requests, please email the Data Access Committee."
+                }
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 100
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "doi": {
+      "title": "Digital Object Identifier (DOI)",
+      "description": "Digital Object Identifier (DOI) assigned to the dataset.\n\n**Use**: Used for citing and referencing the dataset.\n\n**Guidelines**: Provide a valid DOI string beginning with the prefix `10.` Set to Unknown – `null`, if DOI is unknown.\n\n**Constraints**: *Maximum length*: 255 characters.\n\n**Example**: 10.13026/kfzx-aw45",
+      "oneOf": [
+        {
+          "title": "DOI",
+          "description": "A globally unique string used to identify digital content and provide a persistent internet link. Must start with '10.' and follow the DOI structure. *Maximum length*: 255 characters.",
+          "type": "string",
+          "pattern": "^10\\.\\d{4,9}/[^\\s]+$",
+          "maxLength": 255,
+          "examples": [
+            "10.13026/kfzx-aw45",
+            "10.1000/182"
+          ]
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "howToCite": {
+      "title": "How to Cite the Dataset",
+      "description": "Citation details for the dataset in American Medical Association (AMA) style, with optional citation instructions.\n\n**Use**: Used for proper attribution, academic referencing, and compliance with citation requirements.\n\n**Guidelines**: Provide details on how to cite the dataset in publications, reports etc. if more than one citation is required. Set to Unknown – `null`, if the citation information is unknown.\n\n**Constraints**: *Maximum number* of citations: 5. *Maximum length* for citation instructions: 3,000 characters.\n",
+      "oneOf": [
+        {
+          "title": "Citation Details",
+          "type": "object",
+          "properties": {
+            "instructions": {
+              "title": "Citation Instructions",
+              "maxLength": 3000,
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "title": "Not Applicable",
+                  "description": "Marks a piece of information as not applicable.",
+                  "type": "string",
+                  "const": "not applicable"
+                }
+              ]
+            },
+            "citations": {
+              "title": "Citations",
+              "description": "A list of citations formatted in American Medical Association (AMA) 11th edition style. *Maximum length* of each citation: 512 characters. *Number of citations*: 1-5. Refer to https://www.amamanualofstyle.com/ for official guidelines.",
+              "type": "array",
+              "items": {
+                "title": "Citation",
+                "description": "A citation formatted in American Medical Association (AMA) 11th edition style. *Maximum length*: 512 characters. Refer to https://www.amamanualofstyle.com/ for official guidelines.",
+                "type": "string",
+                "maxLength": 512,
+                "examples": [
+                  "Wagner P, Strodthoff N, Bousseljot RD, et al. PTB-XL, a large publicly available electrocardiography dataset. Sci Data. 2020;7(1):154. Published 2020 May 25. doi:10.1038/s41597-020-0495-6",
+                  "Strodthoff N, Mehari T, Nagel C, et al. PTB-XL+, a comprehensive electrocardiographic feature dataset. Sci Data. 2023;10(1):279. Published 2023 May 13. doi:10.1038/s41597-023-02153-8"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1,
+              "maxItems": 5
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "citations"
+          ]
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    },
+    "references": {
+      "title": "References",
+      "description": "List of references cited within the metadata descriptions in this metadata record, formatted in American Medical Association (AMA) style.\n\n**Use**: Used for adding context to the metadata content.\n\n**Guidelines**: Use this field only if other works have been referenced within the text of any of the fields. Do not use this for providing information about how to cite the dataset. Set to Not Applilcable – `not applicable`, if there are no citations within this document.\n\n**Constraints**: *Maximum length*: 5,000 characters.\n",
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "title": "Not Applicable",
+          "description": "Marks a piece of information as not applicable.",
+          "type": "string",
+          "const": "not applicable"
+        }
+      ]
+    },
+    "modellingTasks": {
+      "title": "Modelling Tasks",
+      "description": "List of intended machine learning or statistical modelling tasks the dataset is suited for.\n\n**Use**: Used to support dataset discovery, task-based filtering, and assessment of dataset suitability for different modelling objectives.\n\n**Guidelines**: Select one or more tasks from the predefined list or specify custom tasks.\n\n**Constraints**: Must contain letters, numbers, spaces, or hyphens only. *Maximum number* of tasks: 25.",
+      "type": "array",
+      "items": {
+        "maxLength": 255,
+        "anyOf": [
+          {
+            "title": "Select Task",
+            "type": "string",
+            "enum": [
+              "classification",
+              "regression",
+              "clustering"
+            ]
+          },
+          {
+            "title": "Custom Task",
+            "type": "string",
+            "pattern": "^[ A-Za-z0-9-]+$"
+          }
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 25
+    },
+    "keywords": {
+      "title": "Keywords",
+      "description": "Keywords associated with the dataset. \n\n**Use**: Used to support dataset searchability, classification, and discovery.\n\n**Guidelines**: Provide relevant keywords describing the dataset's content and its essential aspects. Avoid broad terms. Keywords should align with commonly used keywords in the domain.\n\n**Constraints**: Must contain only spaces, letters, numbers, underscores, or hyphens. \n\n*Minimum keyword length*: 2 characters.  \n*Maximum keyword length*: 255 characters.  \n\n*Minimum number of items*: 1.  \n*Maximum number of items*: 15.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[ A-Za-z0-9_-]+$",
+        "minLength": 2,
+        "maxLength": 255
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 15
+    },
+    "licence": {
+      "title": "Licence",
+      "description": "Licence under which the dataset is provided or distributed.\n\n**Use**: Used to determine usage rights and restrictions, and redistribution terms for the dataset.\n\n**Guidelines**: Provide either a URL link or the licence text. Ensure the URL link is accessible and the licence content describes the legal terms of use, redistribution, and modification. Set to Unknown – `null`, if the licence information is unknown.\n\n**Constraints**: One licence entry as either a URL link or text.\n",
+      "oneOf": [
+        {
+          "title": "URL Link",
+          "description": "Uniform Resource Locator (URL) with optional title and description.",
+          "type": "object",
+          "properties": {
+            "url": {
+              "title": "Link",
+              "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator). *Maximum length*: 2,048 characters.",
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https?://.+$",
+              "maxLength": 2048,
+              "examples": [
+                "http://example.org/",
+                "https://example.org/"
+              ]
+            },
+            "title": {
+              "title": "Title",
+              "description": "A short, descriptive, user-friendly URL title, with each main word capitalised. Used in interfaces for display purposes instead of the actual URL link. Use specific, meaningful keywords to indicate what the URL is about at a glance. *Maximum length*: 255 characters.",
+              "type": "string",
+              "maxLength": 255
+            },
+            "description": {
+              "title": "Description",
+              "description": "A brief description of the URL's content. Be clear and concise. *Maximum length*: 1,500 characters.",
+              "type": "string",
+              "maxLength": 1500
+            }
+          },
+          "required": [
+            "url",
+            "title"
+          ],
+          "additionalProperties": false,
+          "examples": [
+            {
+              "url": "https://ucum.org",
+              "title": "UCUM Units",
+              "description": "Measurement units defined by Unified Code for Units of Measure (UCUM)."
+            }
+          ]
+        },
+        {
+          "title": "Licence Text",
+          "description": "*Maximum length*: 10,000 characters.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        {
+          "title": "Unknown",
+          "description": "Unknown, missing information. Field set to `null`.",
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "label",
+    "version",
+    "versionDate",
+    "title",
+    "summary",
+    "purpose",
+    "inclusionCriteria",
+    "exclusionCriteria",
+    "temporalCoverage",
+    "geographicCoverage",
+    "acquisitionMethods",
+    "healthcareSettings",
+    "patientNum",
+    "dataModalities",
+    "dataFormats",
+    "privacyCompliance",
+    "ethicsApproval",
+    "patientConsent",
+    "owners",
+    "licence",
+    "keywords"
+  ]
+}

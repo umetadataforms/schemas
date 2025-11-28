@@ -1,0 +1,61 @@
+{
+  "schema": "modular/tabular-data-metadata/v0.0.1.json",
+  "data": [
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json",
+      "filePath": "baseline-data.tsv",
+      "fileSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fileLabel": "baseline_data",
+      "fields": [
+        {
+          "label": "SubjectID",
+          "description": "Anonymised subject identifier.",
+          "dataType": "string",
+          "measurementType": "not applicable",
+          "fieldType": "subject_id"
+        },
+        {
+          "label": "BaselineDate",
+          "description": "Baseline date.",
+          "dataType": "datetime",
+          "measurementType": "not applicable",
+          "fieldType": "index_timestamp"
+        },
+        {
+          "label": "Baseline",
+          "description": "Baseline indicator.",
+          "dataType": "integer",
+          "measurementType": "binary",
+          "fieldType": "baseline_indicator"
+        },
+        {
+          "label": "MyocardialInfarction",
+          "description": "Myocardial infarction event during the follow-up",
+          "dataType": "integer",
+          "measurementType": "binary",
+          "categories": [
+            {
+              "label": "no",
+              "code": 0
+            },
+            {
+              "label": "yes",
+              "code": 1
+            }
+          ],
+          "role": "target",
+          "missingValueCode": ""
+        },
+        {
+          "label": "Age",
+          "description": "Patient age in years at baseline.",
+          "dataType": "float",
+          "measurementType": "continuous",
+          "role": "feature",
+          "units": "a",
+          "missingValueCode": ""
+        }
+      ]
+    }
+  ]
+}

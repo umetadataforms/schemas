@@ -1,0 +1,7 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/null/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unknown",
+  "description": "Unknown, missing information. Field set to `null`.",
+  "type": "null"
+}

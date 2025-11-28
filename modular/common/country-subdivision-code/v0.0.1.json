@@ -1,0 +1,8 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/country-subdivision-code/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Country Subdivision Code",
+  "description": "A country subdivision code as defined in ISO 3166-2.",
+  "type": "string",
+  "pattern": "^[A-Z]{2}(?:-[A-Z0-9]{1,3})+$"
+}

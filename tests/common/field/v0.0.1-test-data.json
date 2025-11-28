@@ -1,0 +1,67 @@
+{
+  "schema": "modular/common/field/v0.0.1.json",
+  "data": [
+    {
+      "label": "SubjectID",
+      "description": "Subject identifier.",
+      "dataType": "integer",
+      "measurementType": "not applicable",
+      "fieldType": "subject_id"
+    },
+    {
+      "label": "SystolicBloodPressure",
+      "description": "Systolic blood pressure measured at ICU admission.",
+      "dataType": "float",
+      "measurementType": "continuous",
+      "role": "feature",
+      "units": "mm[Hg]",
+      "missingValueCode": "",
+      "tags": [
+        {
+          "code": 271649006,
+          "name": "Systolic blood pressure",
+          "isPrimary": true
+        }
+      ]
+    },
+    {
+      "label": "Sex",
+      "description": "Biological sex",
+      "dataType": "integer",
+      "measurementType": "binary",
+      "categories": [
+        {
+          "label": "female",
+          "code": 0
+        },
+        {
+          "label": "male",
+          "code": 1
+        }
+      ],
+      "role": "feature",
+      "missingValueCode": "NA",
+      "tags": [
+        {
+          "code": 734000001,
+          "name": "Biological sex",
+          "isPrimary": true
+        }
+      ]
+    },
+    {
+      "label": "ImageFile",
+      "description": "Path to the associated image file.",
+      "dataType": "string",
+      "measurementType": "not applicable",
+      "fieldType": "path"
+    },
+    {
+      "label": "Baseline",
+      "description": "Baseline indicator.",
+      "dataType": "integer",
+      "measurementType": "not applicable",
+      "fieldType": "baseline_indicator"
+    }
+  ]
+}

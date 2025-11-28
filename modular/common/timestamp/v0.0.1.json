@@ -1,0 +1,13 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/timestamp/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timestamp",
+  "description": "A valid ISO 8601 / RFC 3339 timestamp string (e.g., 2024-08-15T14:35:22Z).",
+  "type": "string",
+  "format": "date-time",
+  "examples": [
+    "1998-05-03T10:42:50Z",
+    "2024-01-02T15:03:12-01:00",
+    "2024-08-15T14:35:22+03:00"
+  ]
+}

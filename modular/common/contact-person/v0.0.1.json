@@ -1,0 +1,60 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/contact-person/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contact Person",
+  "description": "A contact person for an organisation.",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "title": "First Name",
+      "description": "First name. Only letters, digits, spaces, and hyphens are allowed. *Maximum length*: 255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 -]+$",
+      "maxLength": 255
+    },
+    "lastName": {
+      "title": "Last Name",
+      "description": "Last name. Only letters, digits, spaces, and hyphens are allowed. *Maximum length*: 255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 -]+$",
+      "maxLength": 255
+    },
+    "role": {
+      "title": "Role",
+      "description": "The contact person's role in the organisation. *Maximum length*: 255 characters.",
+      "type": "string",
+      "maxLength": 255
+    },
+    "email": {
+      "title": "Contact Email",
+      "description": "An email address as defined by RFC 5321. *Maximum length*: 255 characters.",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/email/v0.0.1.json"
+    },
+    "telephone": {
+      "title": "Contact Telephone",
+      "description": "A contact telephone number in E.164 format. Must start with '+' followed by a country code and digits, with no whitespace or separators. *Maximum length*: 16 characters. *Example*: +442075895111",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/telephone/v0.0.1.json"
+    },
+    "comments": {
+      "title": "Additional Comments",
+      "description": "Additional comments about how to make contact. *Maximum length*: 5000 characters.",
+      "type": "string",
+      "maxLength": 5000
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "firstName",
+    "lastName"
+  ],
+  "examples": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "role": "Data Manager",
+      "email": "john.doe@email.com",
+      "telephone": "+12345678901",
+      "comments": "Prefer to be contacted by email."
+    }
+  ]
+}

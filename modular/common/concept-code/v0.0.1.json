@@ -1,0 +1,60 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/concept-code/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Removed additionalProperties: false. Make sure to use unevaluatedProperties: false in parent schemas.",
+  "title": "Clinical Concept Code",
+  "description": "A clinical concept code with its identifier, preferred name, and optional vocabulary and vocabulary version.\n\n**Use**: Used in semantic data interoperability, search, and filtering.\n\n**Guidelines**: Ensure the concept code is semantically correct and comes from one of the standardised vocabularies. Set to the field to `null` if there is no matching standardised clinical concept or a matching concept wasn't looked up.\n- `code` must be a valid identifier from the specified vocabulary.\n- `name` must match the preferred name of the concept in the specified vocabulary.\n- `code` and `name` must be matching pairs within the specified vocabulary.\n- `vocabulary` should be a stable, recognisable identifier (e.g., SNOMED-CT, ICD-10).\n- `vocabularyVersion`should be stated when possible.\n\n**Constraints**:\n- `code` A string or ineger.\n- `code` *Maximum length*: 255 characters if a string.\n- `name` *Maximum length*: 255 characters.\n- `vocabulary` *Maximum length*: 75 characters.\n- `vocabularyVersion` *Maximum length* 75 characters.",
+  "type": "object",
+  "properties": {
+    "code": {
+      "title": "Code",
+      "description": "A clinical concept code from one of the standardised clinical vocabularies.",
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 255
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "name": {
+      "title": "Name",
+      "description": "The preferred clinical concept name associated with the code.",
+      "type": "string",
+      "maxLength": 255
+    },
+    "vocabulary": {
+      "title": "Vocabulary",
+      "description": "The standardised clinical vocabulary associated with the code.",
+      "type": "string",
+      "maxLength": 75
+    },
+    "vocabularyVersion": {
+      "title": "Vocabulary Version",
+      "description": "The version of the vocabulary.",
+      "type": "string",
+      "maxLength": 75
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "code",
+    "name"
+  ],
+  "examples": [
+    {
+      "code": "I21",
+      "name": "Acute myocardial infarction",
+      "vocabulary": "ICD-10",
+      "vocabularyVersion": "2019"
+    },
+    {
+      "code": 4855003,
+      "name": "Retinopathy due to diabetes mellitus",
+      "vocabulary": "SNOMED-CT",
+      "vocabularyVersion": "v1.36.4"
+    }
+  ]
+}

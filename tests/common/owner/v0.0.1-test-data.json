@@ -1,0 +1,16 @@
+{
+  "schema": "modular/common/owner/v0.0.1.json",
+  "data": [
+    {
+      "name": "John Doe University Hospital NHS Trust",
+      "website": "https://john-doe-hospital.example.nhs.uk",
+      "country": "GB",
+      "address": "Cardiology Research Unit, John Doe Hospital, London W0 0AA, United Kingdom",
+      "contactDetails": {
+        "email": "data-access@john-doe-hospital.example.nhs.uk",
+        "telephone": "+442000000000",
+        "comments": "For dataset access requests, please email the Data Access Committee."
+      }
+    }
+  ]
+}

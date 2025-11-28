@@ -1,0 +1,8 @@
+{
+  "schema": "modular/common/country-code/v0.0.1.json",
+  "data": [
+    "GB",
+    "US",
+    "ES"
+  ]
+}

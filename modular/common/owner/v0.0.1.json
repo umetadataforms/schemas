@@ -1,0 +1,79 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/owner/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owner",
+  "description": "General information about the owner organisation/entity.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Name",
+      "description": "The official name of the organisation. *Maximum length*: 510 characters.",
+      "type": "string",
+      "maxLength": 510
+    },
+    "website": {
+      "title": "Website",
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/url/v0.0.1.json"
+    },
+    "country": {
+      "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/country-code/v0.0.1.json"
+    },
+    "address": {
+      "title": "Address",
+      "description": "The address of the organisation. *Maximum length*: 1,024 characters.",
+      "type": "string",
+      "maxLength": 1024
+    },
+    "contactDetails": {
+      "title": "Contact Details",
+      "anyOf": [
+        {
+          "title": "Email/Telephone",
+          "description": "An email address and/or a telephone number for the organisation.",
+          "type": "object",
+          "properties": {
+            "email": {
+              "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/email/v0.0.1.json"
+            },
+            "telephone": {
+              "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/telephone/v0.0.1.json"
+            },
+            "comments": {
+              "title": "Additional Comments",
+              "description": "Additional comments about how to make contact. *Maximum length*: 5000 characters.",
+              "type": "string",
+              "maxLength": 50000
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Contact People",
+          "description": "A list of contact people for the organisation.",
+          "type": "array",
+          "items": {
+            "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/contact-person/v0.0.1.json"
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "contactDetails"
+  ],
+  "exampels": [
+    {
+      "name": "John Doe University Hospital NHS Trust",
+      "website": "https://john-doe-hospital.example.nhs.uk",
+      "country": "GB",
+      "address": "Cardiology Research Unit, John Doe Hospital, London W0 0AA, United Kingdom",
+      "contactDetails": {
+        "email": "data-access@john-doe-hospital.example.nhs.uk",
+        "telephone": "+442000000000",
+        "comments": "For dataset access requests, please email the Data Access Committee."
+      }
+    }
+  ]
+}
