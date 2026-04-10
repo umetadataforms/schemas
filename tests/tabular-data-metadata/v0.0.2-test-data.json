@@ -1,0 +1,133 @@
+{
+  "schema": "modular/tabular-data-metadata/v0.0.2.json",
+  "data": [
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.2.json",
+      "files": [
+        {
+          "path": "data/baseline-data.tsv",
+          "format": "TSV",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "label": "baseline_data",
+          "title": "Baseline Data"
+        }
+      ],
+      "fields": [
+        {
+          "label": "SubjectID",
+          "description": "Subject identifier.",
+          "dataType": "integer",
+          "dateFormat": "not applicable",
+          "measurementType": "not applicable",
+          "categories": "not applicable",
+          "units": "not applicable",
+          "missingValueCode": "not applicable",
+          "fieldType": "subject_id",
+          "tags": "not applicable",
+          "resources": "not applicable"
+        },
+        {
+          "label": "Baseline",
+          "description": "Baseline indicator.",
+          "dataType": "integer",
+          "dateFormat": "not applicable",
+          "measurementType": "binary",
+          "categories": [
+            {
+              "label": "no",
+              "code": 0
+            },
+            {
+              "label": "yes",
+              "code": 1
+            }
+          ],
+          "units": "not applicable",
+          "missingValueCode": "not applicable",
+          "fieldType": "baseline_indicator",
+          "tags": "not applicable",
+          "resources": "not applicable"
+        },
+        {
+          "label": "BaselineDate",
+          "description": "Baseline date.",
+          "dataType": "date",
+          "dateFormat": "YYYY-MM-DD",
+          "measurementType": "not applicable",
+          "categories": "not applicable",
+          "units": "not applicable",
+          "missingValueCode": "not applicable",
+          "fieldType": "record_datetime",
+          "tags": "not applicable",
+          "resources": "not applicable"
+        },
+        {
+          "label": "SystolicBloodPressure",
+          "description": "Systolic blood pressure measured at ICU admission.",
+          "dataType": "float",
+          "dateFormat": "not applicable",
+          "measurementType": "continuous",
+          "role": "feature",
+          "categories": "not applicable",
+          "units": "mm[Hg]",
+          "missingValueCode": "not applicable",
+          "fieldType": "standard",
+          "tags": [
+            {
+              "code": 271649006,
+              "vocabulary": "SNOMED CT",
+              "vocabularyVersion": "UK v20260211",
+              "name": "Systolic blood pressure",
+              "isPrimary": true
+            }
+          ],
+          "resources": "not applicable"
+        },
+        {
+          "label": "Sex",
+          "description": "Biological sex",
+          "dataType": "integer",
+          "dateFormat": "not applicable",
+          "measurementType": "binary",
+          "categories": [
+            {
+              "label": "female",
+              "code": 0
+            },
+            {
+              "label": "male",
+              "code": 1
+            }
+          ],
+          "role": "feature",
+          "units": "not applicable",
+          "missingValueCode": "NA",
+          "fieldType": "standard",
+          "tags": [
+            {
+              "code": 734000001,
+              "name": "Biological sex",
+              "vocabulary": "SNOMED CT",
+              "vocabularyVersion": "UK v20260211",
+              "isPrimary": true
+            }
+          ],
+          "resources": "not applicable"
+        },
+        {
+          "label": "ImageFile",
+          "description": "Path to the associated image file.",
+          "dataType": "string",
+          "dateFormat": "not applicable",
+          "measurementType": "not applicable",
+          "categories": "not applicable",
+          "units": "not applicable",
+          "missingValueCode": "not applicable",
+          "fieldType": "path",
+          "tags": "not applicable",
+          "resources": "not applicable"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+JSON Data Test Log
+
+Timestamp: 2026-04-10T11:41:37.161Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/work/umetadataforms/schemas
+ Schema ref:     modular/real-dataset-metadata/v0.0.2.json
+ Root schema:    ../../../modular/real-dataset-metadata/v0.0.2.json
+ Test file:      ../../../tests/real-dataset-metadata/v0.0.2-test-data.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/real-dataset-metadata/v0.0.2.json
+ SHA256:         c93092f13a2c2cfe11bb451cc8958c6df1e4bcc5fe70876210ca8776eed12d2f
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
+
+= Test File ====================================================================
+ Path:           ../../../tests/real-dataset-metadata/v0.0.2-test-data.json
+ SHA256:         d22e7386382f0ba90241a0e9da36dd2532ef51b8a224131270b4581aa120f705
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         modified
+
+= Validation ===================================================================
+✔ data[0] is valid.
+✔ data[1] is valid.
+✔ data[2] is valid.

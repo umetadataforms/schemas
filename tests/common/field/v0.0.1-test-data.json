@@ -62,6 +62,53 @@
       "dataType": "integer",
       "measurementType": "not applicable",
       "fieldType": "baseline_indicator"
+    },
+    {
+      "label": "MeasurementUnknown",
+      "description": "Measurement type unknown.",
+      "dataType": "string",
+      "measurementType": null
+    },
+    {
+      "label": "RoleUnknown",
+      "description": "Role unknown.",
+      "dataType": "string",
+      "measurementType": "nominal",
+      "role": null
+    },
+    {
+      "label": "MissingCodeInteger",
+      "description": "Missing value code as integer.",
+      "dataType": "integer",
+      "measurementType": "discrete",
+      "missingValueCode": 999
+    },
+    {
+      "label": "MissingCodeNull",
+      "description": "Missing value code unknown.",
+      "dataType": "integer",
+      "measurementType": "discrete",
+      "missingValueCode": null
+    },
+    {
+      "label": "ResourcesArray",
+      "description": "Resources with URL and file.",
+      "dataType": "string",
+      "measurementType": "nominal",
+      "resources": [
+        "https://example.org/resource",
+        {
+          "path": "resources/notes.txt",
+          "format": "TXT"
+        }
+      ]
+    },
+    {
+      "label": "ResourcesNull",
+      "description": "Resources unknown.",
+      "dataType": "string",
+      "measurementType": "nominal",
+      "resources": null
     }
   ]
 }

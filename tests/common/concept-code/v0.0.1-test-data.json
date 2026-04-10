@@ -12,11 +12,6 @@
       "name": "Retinopathy due to diabetes mellitus",
       "vocabulary": "SNOMED-CT",
       "vocabularyVersion": "v1.36.4"
-    },
-    {
-      "code": 4855003,
-      "name": "Retinopathy due to diabetes mellitus",
-      "unknownProperty": true
     }
   ]
 }

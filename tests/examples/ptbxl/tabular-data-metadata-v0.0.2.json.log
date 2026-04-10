@@ -1,0 +1,24 @@
+JSON Data Test Log
+
+Timestamp: 2026-04-10T11:41:37.927Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/work/umetadataforms/schemas
+ Schema ref:     https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.2.json
+ Root schema:    ../../../modular/tabular-data-metadata/v0.0.2.json
+ Test file:      ../../../examples/ptbxl/tabular-data-metadata-v0.0.2.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/tabular-data-metadata/v0.0.2.json
+ SHA256:         baee3f9e774c8aa0055bba0e2f26b75e04c32d352aeb597e487b96e129d2bf3b
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
+
+= Test File ====================================================================
+ Path:           ../../../examples/ptbxl/tabular-data-metadata-v0.0.2.json
+ SHA256:         d95d33dbeabecb54b62b530070dc9fd6fd1158a8b8d4434d065b97c642ed03bf
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         modified
+
+= Validation ===================================================================
+✔ data[0] is valid.

@@ -1,24 +1,24 @@
 JSON Data Test Log
 
-Timestamp: 2025-11-28T20:38:39.384Z
+Timestamp: 2026-04-10T11:41:35.570Z
 
 = Context ======================================================================
- Repo root:      <HOME>/projects/umetadataforms/schemas
+ Repo root:      <HOME>/work/umetadataforms/schemas
  Schema ref:     modular/common/geographic-areas/v0.0.1.json
  Root schema:    ../../../modular/common/geographic-areas/v0.0.1.json
  Test file:      ../../../tests/common/geographic-area/v0.0.1-test-data.json
 
 = Schema File ==================================================================
  Path:           ../../../modular/common/geographic-areas/v0.0.1.json
- SHA256:         20332f5009bf50f9f42e932ab780425ddb69549e183dd6ec2f16796058263b7e
- Repo commit:   (not a git repository)
- Status:        unknown
+ SHA256:         c65e0c3628205740fb61ad735432e1761cd5609f09d816014546dc92a5ebc2f7
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Test File ====================================================================
  Path:           ../../../tests/common/geographic-area/v0.0.1-test-data.json
  SHA256:         52354fc854dcd4cd425e9a7146476b602df90bac30697f1035f872fac2de9db1
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Validation ===================================================================
 ✔ data[0] is valid.

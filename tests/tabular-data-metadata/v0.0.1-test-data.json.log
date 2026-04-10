@@ -1,9 +1,9 @@
 JSON Data Test Log
 
-Timestamp: 2025-11-28T20:38:40.439Z
+Timestamp: 2026-04-10T11:41:37.262Z
 
 = Context ======================================================================
- Repo root:      <HOME>/projects/umetadataforms/schemas
+ Repo root:      <HOME>/work/umetadataforms/schemas
  Schema ref:     modular/tabular-data-metadata/v0.0.1.json
  Root schema:    ../../../modular/tabular-data-metadata/v0.0.1.json
  Test file:      ../../../tests/tabular-data-metadata/v0.0.1-test-data.json
@@ -11,14 +11,14 @@ Timestamp: 2025-11-28T20:38:40.439Z
 = Schema File ==================================================================
  Path:           ../../../modular/tabular-data-metadata/v0.0.1.json
  SHA256:         2a7c9f190e0b1c0e757a8f7a6c779b62e3d3fbe70cbd681b1d4d14d06ebf97f3
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Test File ====================================================================
  Path:           ../../../tests/tabular-data-metadata/v0.0.1-test-data.json
  SHA256:         c627a053872ec64abadbb39a5def3ce47fb9dcff3baf52e4b1a9480996fc4778
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Validation ===================================================================
 ✔ data[0] is valid.

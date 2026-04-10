@@ -1,0 +1,23 @@
+{
+  "schema": "modular/common/category/v0.0.2.json",
+  "data": [
+    {
+      "label": "male",
+      "code": 1
+    },
+    {
+      "label": "MALE",
+      "code": 1,
+      "tags": [
+        {
+          "code": 8507,
+          "name": "Male",
+          "vocabulary": "OHDSI",
+          "vocabularyVersion": "v1",
+          "isPrimary": true,
+          "confidenceScore": 1.0
+        }
+      ]
+    }
+  ]
+}

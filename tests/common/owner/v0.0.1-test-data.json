@@ -11,6 +11,17 @@
         "telephone": "+442000000000",
         "comments": "For dataset access requests, please email the Data Access Committee."
       }
+    },
+    {
+      "name": "Example Research Institute",
+      "contactDetails": [
+        {
+          "firstName": "Jane",
+          "lastName": "Smith",
+          "role": "Data Access Lead",
+          "email": "jane.smith@example.org"
+        }
+      ]
     }
   ]
 }

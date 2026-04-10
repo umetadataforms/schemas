@@ -1,0 +1,10 @@
+{
+  "schema": "modular/common/units/v0.0.2.json",
+  "data": [
+    "m",
+    "kg",
+    "umol",
+    "mm[Hg]",
+    "mg"
+  ]
+}

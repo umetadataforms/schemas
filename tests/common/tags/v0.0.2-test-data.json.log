@@ -1,0 +1,26 @@
+JSON Data Test Log
+
+Timestamp: 2026-04-10T11:41:36.445Z
+
+= Context ======================================================================
+ Repo root:      <HOME>/work/umetadataforms/schemas
+ Schema ref:     modular/common/tags/v0.0.2.json
+ Root schema:    ../../../modular/common/tags/v0.0.2.json
+ Test file:      ../../../tests/common/tags/v0.0.2-test-data.json
+
+= Schema File ==================================================================
+ Path:           ../../../modular/common/tags/v0.0.2.json
+ SHA256:         9220cccc91843dde1b7679621b9b37a8790fe76bb5aca151fcef549d42b71cd1
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
+
+= Test File ====================================================================
+ Path:           ../../../tests/common/tags/v0.0.2-test-data.json
+ SHA256:         87f8ed320911606be0cdd82b571e2de41058f2701889049df8a7f00d9e03e021
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         modified
+
+= Validation ===================================================================
+✔ data[0] is valid.
+✔ data[1] is valid.
+✔ data[2] is valid.

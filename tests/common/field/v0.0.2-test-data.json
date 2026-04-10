@@ -1,0 +1,127 @@
+{
+  "schema": "modular/common/field/v0.0.2.json",
+  "data": [
+    {
+      "label": "SubjectID",
+      "description": "Subject identifier.",
+      "dataType": "integer",
+      "dateFormat": "not applicable",
+      "measurementType": "not applicable",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "subject_id",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    },
+    {
+      "label": "SystolicBloodPressure",
+      "description": "Systolic blood pressure measured at ICU admission.",
+      "dataType": "float",
+      "dateFormat": "not applicable",
+      "measurementType": "continuous",
+      "role": "feature",
+      "categories": "not applicable",
+      "units": "mm[Hg]",
+      "missingValueCode": "not applicable",
+      "fieldType": "standard",
+      "tags": [
+        {
+          "code": 271649006,
+          "name": "Systolic blood pressure",
+          "vocabulary": "SNOMED CT",
+          "vocabularyVersion": "UK v20260211",
+          "isPrimary": true
+        }
+      ],
+      "resources": "not applicable"
+    },
+    {
+      "label": "BaselineDate",
+      "description": "Baseline date.",
+      "dataType": "date",
+      "dateFormat": "YYYY-MM-DD",
+      "measurementType": "not applicable",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "record_datetime",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    },
+    {
+      "label": "CustomMeasurement",
+      "description": "Custom measurement type and role.",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "custom_scale",
+      "role": "custom_role",
+      "categories": "unknown",
+      "units": "unknown",
+      "missingValueCode": "unknown",
+      "fieldType": "custom_type",
+      "tags": "unknown",
+      "resources": "unknown"
+    },
+    {
+      "label": "UnknownRoles",
+      "description": "Unknown measurement type and role.",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "unknown",
+      "role": "unknown",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "standard",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    },
+    {
+      "label": "CategoricalField",
+      "description": "Categorical field with resources.",
+      "dataType": "integer",
+      "dateFormat": "not applicable",
+      "measurementType": "nominal",
+      "role": "feature",
+      "categories": [
+        {
+          "label": "no",
+          "code": 0
+        },
+        {
+          "label": "yes",
+          "code": 1
+        }
+      ],
+      "units": "not applicable",
+      "missingValueCode": "NA",
+      "fieldType": "standard",
+      "tags": [
+        {
+          "name": "binary outcome",
+          "isPrimary": true
+        }
+      ],
+      "resources": [
+        {
+          "url": "https://example.org/codebook",
+          "title": "Codebook"
+        }
+      ]
+    },
+    {
+      "label": "MissingCodeInteger",
+      "description": "Missing value code as integer.",
+      "dataType": "integer",
+      "dateFormat": "not applicable",
+      "measurementType": "discrete",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": 999,
+      "fieldType": "standard",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    }
+  ]
+}

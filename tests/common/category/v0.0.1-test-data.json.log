@@ -1,9 +1,9 @@
 JSON Data Test Log
 
-Timestamp: 2025-11-28T20:38:38.547Z
+Timestamp: 2026-04-10T11:41:34.155Z
 
 = Context ======================================================================
- Repo root:      <HOME>/projects/umetadataforms/schemas
+ Repo root:      <HOME>/work/umetadataforms/schemas
  Schema ref:     modular/common/category/v0.0.1.json
  Root schema:    ../../../modular/common/category/v0.0.1.json
  Test file:      ../../../tests/common/category/v0.0.1-test-data.json
@@ -11,14 +11,14 @@ Timestamp: 2025-11-28T20:38:38.547Z
 = Schema File ==================================================================
  Path:           ../../../modular/common/category/v0.0.1.json
  SHA256:         5fa13f0f087b25b83edc0027b84c5082ae5e0f84a171257bd6571a2a8becfbcc
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Test File ====================================================================
  Path:           ../../../tests/common/category/v0.0.1-test-data.json
  SHA256:         2fa1f07938b370c642b117fa0b9203792989be6096f5eda490910d623678c9c5
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Validation ===================================================================
 ✔ data[0] is valid.

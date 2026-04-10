@@ -1,0 +1,19 @@
+{
+  "schema": "modular/common/concept-code/v0.0.2.json",
+  "data": [
+    {
+      "code": "I50.1",
+      "name": "Left ventricular failure",
+      "vocabulary": "ICD-10",
+      "vocabularyVersion": "2019"
+    },
+    {
+      "code": 4855003,
+      "name": "Retinopathy due to diabetes mellitus",
+      "vocabulary": "SNOMED-CT",
+      "vocabularyVersion": "UK v20260211",
+      "isPrimary": true,
+      "confidenceScore": 0.98
+    }
+  ]
+}

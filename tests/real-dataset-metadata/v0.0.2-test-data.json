@@ -1,0 +1,249 @@
+{
+  "schema": "modular/real-dataset-metadata/v0.0.2.json",
+  "data": [
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.2.json",
+      "label": "Example-1",
+      "version": "v1.0.0",
+      "versionDate": "2025-11-27",
+      "versionInfo": "<p>Some version information!</p>",
+      "title": "Example Dataset 1",
+      "summary": "<p>Summary!</p>",
+      "purpose": "<p>Purpose!</p>",
+      "baseline": "<p>Baseline!</p>",
+      "inclusionCriteria": "<h3>Inclusion criteria:</h3><ol><li><p>Criterion 1.</p></li><li><p>Criterion 2.</p></li></ol><p></p>",
+      "exclusionCriteria": "<h3>Exclusion criteria:</h3><ol><li><p>Criterion 1.</p></li><li><p>Criterion 2.</p></li><li><p>Criterion 3.</p></li></ol><p></p>",
+      "targets": "<p>Targets!</p>",
+      "studyDesign": "<p>Study design!</p>",
+      "temporalCoverage": {
+        "startDate": "2025-11-01",
+        "endDate": "2025-11-25"
+      },
+      "geographicCoverage": {
+        "geographicInfo": "<p>Information!</p>",
+        "geographicAreas": [
+          {
+            "countryCode": "PT",
+            "countrySubdivisionCodes": [
+              "PT-03",
+              "PT-01"
+            ]
+          },
+          {
+            "countryCode": "ES",
+            "countrySubdivisionCodes": [
+              "ES-B"
+            ]
+          }
+        ]
+      },
+      "dataSampling": "<p>Data sampling!</p>",
+      "acquisitionMethods": "<h3>Time Series Data</h3><p>Information!</p><p></p><h3>Image Data</h3><p>Information!</p>",
+      "annotationMethods": "<h3>Time Series Data</h3><p>Information!</p><p></p><h3>Image Data</h3><p>Information!</p><p></p>",
+      "limitations": "<p>Limitations!</p><p></p>",
+      "dataPreprocessing": "<p>Data pre-processing!</p><p></p>",
+      "healthcareSettings": [
+        "primary care",
+        "secondary care"
+      ],
+      "patientNum": 0,
+      "additionalDocumentation": [
+        {
+          "url": "https://example.org/dataset-documentation",
+          "title": "Dataset Documentation",
+          "description": "<p>General documentation describing dataset structure and usage.</p>"
+        }
+      ],
+      "dataModalities": [
+        {
+          "dataModality": "tabular",
+          "dataFormats": [
+            "TSV"
+          ]
+        },
+        {
+          "dataModality": "time series",
+          "dataFormats": [
+            "WFDB"
+          ]
+        },
+        {
+          "dataModality": "image",
+          "dataFormats": [
+            "DICOM"
+          ]
+        }
+      ],
+      "privacyCompliance": "<p>Privacy compliance!</p>",
+      "ethicsApproval": [
+        {
+          "approvalStatus": "approved",
+          "approvalDate": "2025-11-01",
+          "approvalAuthority": "<p>Approval authority!</p>",
+          "approvalNumber": "N000",
+          "approvalDetails": "<p>Details!</p>"
+        }
+      ],
+      "patientConsent": "<p>Patient consent!</p>",
+      "acknowledgements": "<p>Acknowledgements!</p>",
+      "funding": "<p>Funding!</p>",
+      "owners": [
+        {
+          "name": "Owner",
+          "website": "https://example.org/",
+          "country": "PT",
+          "address": "Address! ",
+          "contactDetails": [
+            {
+              "firstName": "John",
+              "lastName": "Doe",
+              "role": "Data Manager",
+              "email": "john.doe@email.com",
+              "comments": "Contact by email only."
+            }
+          ]
+        }
+      ],
+      "doi": "10.0000/placeholder",
+      "howToCite": {
+        "instructions": "<p>Citation instructions!</p>",
+        "citations": [
+          "Related Publication. Journal Name. Year."
+        ]
+      },
+      "references": "<p>not applicable</p>",
+      "modellingTasks": [
+        "classification",
+        "regression",
+        "clustering"
+      ],
+      "keywords": [
+        "keyword1",
+        "keyword2"
+      ],
+      "licence": "<p>None!</p>",
+      "dataSources": "not applicable"
+    },
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.2.json",
+      "label": "Example-Unknown",
+      "version": "unknown",
+      "versionDate": "unknown",
+      "versionInfo": "unknown",
+      "title": "Example Dataset Unknown",
+      "summary": "<p>Summary!</p>",
+      "purpose": "unknown",
+      "baseline": "unknown",
+      "inclusionCriteria": "unknown",
+      "exclusionCriteria": "unknown",
+      "targets": "unknown",
+      "studyDesign": "unknown",
+      "temporalCoverage": {
+        "startDate": "unknown",
+        "endDate": "unknown"
+      },
+      "geographicCoverage": "unknown",
+      "dataSampling": "unknown",
+      "acquisitionMethods": "unknown",
+      "annotationMethods": "unknown",
+      "limitations": "unknown",
+      "dataPreprocessing": "unknown",
+      "healthcareSettings": "unknown",
+      "patientNum": 0,
+      "additionalDocumentation": "unknown",
+      "dataModalities": [
+        {
+          "dataModality": "tabular",
+          "dataFormats": [
+            "TSV"
+          ]
+        }
+      ],
+      "privacyCompliance": "unknown",
+      "ethicsApproval": "unknown",
+      "patientConsent": "unknown",
+      "acknowledgements": "<p>Acknowledgements!</p>",
+      "funding": "unknown",
+      "owners": "unknown",
+      "doi": "unknown",
+      "howToCite": "unknown",
+      "references": "<p>References!</p>",
+      "modellingTasks": "unknown",
+      "keywords": [
+        "keyword1"
+      ],
+      "licence": "unknown",
+      "dataSources": "unknown"
+    },
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.2.json",
+      "label": "Example-NotApplicable",
+      "version": "v2.0.0",
+      "versionDate": "2025-11-27",
+      "versionInfo": "<p>Some version information!</p>",
+      "title": "Example Dataset 2",
+      "summary": "<p>Summary!</p>",
+      "purpose": "<p>Purpose!</p>",
+      "baseline": "not applicable",
+      "inclusionCriteria": "<p>Inclusion criteria!</p>",
+      "exclusionCriteria": "<p>Exclusion criteria!</p>",
+      "targets": "not applicable",
+      "studyDesign": "not applicable",
+      "temporalCoverage": {
+        "startDate": "2025-11-01",
+        "endDate": "2025-11-25"
+      },
+      "geographicCoverage": {
+        "geographicAreas": [
+          {
+            "countryCode": "PT",
+            "countrySubdivisionCodes": [
+              "PT-03"
+            ]
+          }
+        ]
+      },
+      "dataSampling": "not applicable",
+      "acquisitionMethods": "not applicable",
+      "annotationMethods": "not applicable",
+      "limitations": "not applicable",
+      "dataPreprocessing": "not applicable",
+      "healthcareSettings": "not applicable",
+      "patientNum": 10,
+      "additionalDocumentation": "not applicable",
+      "dataModalities": [
+        {
+          "dataModality": "tabular",
+          "dataFormats": [
+            "CSV"
+          ]
+        }
+      ],
+      "privacyCompliance": "not applicable",
+      "ethicsApproval": "not applicable",
+      "patientConsent": "not applicable",
+      "acknowledgements": "<p>Acknowledgements!</p>",
+      "funding": "<p>Funding!</p>",
+      "owners": [
+        {
+          "name": "Owner",
+          "contactDetails": {
+            "email": "owner@example.org"
+          }
+        }
+      ],
+      "doi": "not applicable",
+      "howToCite": "not applicable",
+      "references": "not applicable",
+      "modellingTasks": "not applicable",
+      "keywords": [
+        "keyword1"
+      ],
+      "licence": {
+        "url": "https://example.org/licence",
+        "title": "Example Licence"
+      },
+      "dataSources": "not applicable"
+    }
+  ]
+}

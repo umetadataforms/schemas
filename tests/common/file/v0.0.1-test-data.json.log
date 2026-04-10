@@ -1,25 +1,26 @@
 JSON Data Test Log
 
-Timestamp: 2025-11-28T20:38:39.314Z
+Timestamp: 2026-04-10T11:41:35.481Z
 
 = Context ======================================================================
- Repo root:      <HOME>/projects/umetadataforms/schemas
+ Repo root:      <HOME>/work/umetadataforms/schemas
  Schema ref:     modular/common/file/v0.0.1.json
  Root schema:    ../../../modular/common/file/v0.0.1.json
  Test file:      ../../../tests/common/file/v0.0.1-test-data.json
 
 = Schema File ==================================================================
  Path:           ../../../modular/common/file/v0.0.1.json
- SHA256:         170a2a20209ca041872474b2bc467f4ab08f020e6ead483e576313b8b7a88dac
- Repo commit:   (not a git repository)
- Status:        unknown
+ SHA256:         c5301240fe87546a3721e335653192206d7abc2020cd18453853153edd2f9d3a
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Test File ====================================================================
  Path:           ../../../tests/common/file/v0.0.1-test-data.json
- SHA256:         3e352d9c725765d5af6c7a9e3cc9630b2ad870ef2c62d0aaca6e270aef0a2b7a
- Repo commit:   (not a git repository)
- Status:        unknown
+ SHA256:         fb16b0540b47a688d0c12fa5be45c74beed4876abac1ba23a5e0fba27a05133f
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         modified
 
 = Validation ===================================================================
 ✔ data[0] is valid.
 ✔ data[1] is valid.
+✔ data[2] is valid.

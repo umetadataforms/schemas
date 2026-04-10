@@ -127,7 +127,157 @@
         "keyword2"
       ],
       "licence": "<p>None!</p>",
+      "dataSources": [
+        {
+          "url": "https://example.org/source",
+          "title": "Source"
+        }
+      ]
+    },
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.1.json",
+      "label": "Example-Null",
+      "version": null,
+      "versionDate": null,
+      "versionInfo": null,
+      "title": "Example Dataset Null",
+      "summary": "<p>Summary!</p>",
+      "purpose": null,
+      "baseline": null,
+      "inclusionCriteria": null,
+      "exclusionCriteria": null,
+      "targets": null,
+      "studyDesign": null,
+      "temporalCoverage": {
+        "startDate": "2025-11-01",
+        "endDate": "2025-11-25"
+      },
+      "geographicCoverage": null,
+      "dataSampling": null,
+      "acquisitionMethods": null,
+      "annotationMethods": null,
+      "limitations": null,
+      "dataPreprocessing": null,
+      "healthcareSettings": null,
+      "patientNum": 0,
+      "additionalDocumentation": null,
+      "dataModalities": [
+        "tabular"
+      ],
+      "dataFormats": [
+        {
+          "dataModality": "tabular",
+          "dataFormats": [
+            "TSV"
+          ]
+        }
+      ],
+      "privacyCompliance": null,
+      "ethicsApproval": null,
+      "patientConsent": null,
+      "acknowledgements": "<p>Acknowledgements!</p>",
+      "funding": null,
+      "owners": null,
+      "doi": null,
+      "howToCite": null,
+      "references": "<p>References!</p>",
+      "keywords": [
+        "keyword1"
+      ],
+      "licence": null,
       "dataSources": null
+    },
+    {
+      "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.1.json",
+      "label": "Example-NotApplicable",
+      "version": "v2.0.0",
+      "versionDate": "2025-11-27",
+      "versionInfo": "<p>Some version information!</p>",
+      "title": "Example Dataset 2",
+      "summary": "<p>Summary!</p>",
+      "purpose": "<p>Purpose!</p>",
+      "baseline": "<p>Baseline!</p>",
+      "inclusionCriteria": "<p>Inclusion criteria!</p>",
+      "exclusionCriteria": "<p>Exclusion criteria!</p>",
+      "targets": "<p>Targets!</p>",
+      "studyDesign": "<p>Study design!</p>",
+      "temporalCoverage": {
+        "startDate": "2025-11-01",
+        "endDate": "2025-11-25"
+      },
+      "geographicCoverage": {
+        "geographicAreas": [
+          {
+            "countryCode": "PT",
+            "countrySubdivisionCodes": [
+              "PT-03"
+            ]
+          }
+        ]
+      },
+      "dataSampling": "<p>Data sampling!</p>",
+      "acquisitionMethods": "<p>Acquisition!</p>",
+      "annotationMethods": "not applicable",
+      "limitations": "<p>Limitations!</p>",
+      "dataPreprocessing": "<p>Data pre-processing!</p>",
+      "healthcareSettings": [
+        "primary care"
+      ],
+      "patientNum": 10,
+      "additionalDocumentation": [
+        {
+          "url": "https://example.org/doc",
+          "title": "Documentation"
+        }
+      ],
+      "dataModalities": [
+        "tabular"
+      ],
+      "dataFormats": [
+        {
+          "dataModality": "tabular",
+          "dataFormats": [
+            "CSV"
+          ]
+        }
+      ],
+      "privacyCompliance": "<p>Privacy compliance!</p>",
+      "ethicsApproval": [
+        {
+          "approvalStatus": "not required"
+        }
+      ],
+      "patientConsent": "<p>Patient consent!</p>",
+      "acknowledgements": "<p>Acknowledgements!</p>",
+      "funding": "<p>Funding!</p>",
+      "owners": [
+        {
+          "name": "Owner",
+          "contactDetails": {
+            "email": "owner@example.org"
+          }
+        }
+      ],
+      "doi": "10.0000/placeholder",
+      "howToCite": {
+        "citations": [
+          "Related Publication. Journal Name. Year."
+        ]
+      },
+      "references": "not applicable",
+      "keywords": [
+        "keyword1"
+      ],
+      "licence": {
+        "url": "https://example.org/licence",
+        "title": "Example Licence"
+      },
+      "dataSources": [
+        {
+          "url": "https://example.org/source",
+          "title": "Source"
+        }
+      ]
     }
   ]
 }

@@ -1,9 +1,9 @@
 JSON Data Test Log
 
-Timestamp: 2025-11-28T20:38:38.861Z
+Timestamp: 2026-04-10T11:41:34.725Z
 
 = Context ======================================================================
- Repo root:      <HOME>/projects/umetadataforms/schemas
+ Repo root:      <HOME>/work/umetadataforms/schemas
  Schema ref:     modular/common/country-subdivision-code/v0.0.1.json
  Root schema:    ../../../modular/common/country-subdivision-code/v0.0.1.json
  Test file:      ../../../tests/common/country-subdivision-code/v0.0.1-test-data.json
@@ -11,14 +11,14 @@ Timestamp: 2025-11-28T20:38:38.861Z
 = Schema File ==================================================================
  Path:           ../../../modular/common/country-subdivision-code/v0.0.1.json
  SHA256:         fa6a12796322e4259adb6d494bc7f70600545bd37a972970ccf39b7154b4d7c9
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Test File ====================================================================
  Path:           ../../../tests/common/country-subdivision-code/v0.0.1-test-data.json
  SHA256:         af15d10d5e81e17f87eef989a2ce21f9a4a7939201ec1f70bc2b283226036f87
- Repo commit:   (not a git repository)
- Status:        unknown
+ Repo commit:    2602d254285eb1f4a00a5c125f353b81923f7a8d
+ Status:         clean
 
 = Validation ===================================================================
 ✔ data[0] is valid.

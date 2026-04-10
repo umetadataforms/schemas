@@ -1,0 +1,26 @@
+{
+  "schema": "modular/common/tags/v0.0.2.json",
+  "data": [
+    [
+      {
+        "code": "I21",
+        "name": "Acute myocardial infarction",
+        "vocabulary": "ICD-10",
+        "vocabularyVersion": "2019",
+        "isPrimary": true
+      }
+    ],
+    [
+      {
+        "name": "echocardiography"
+      }
+    ],
+    [
+      {
+        "name": "echocardiography",
+        "isPrimary": true,
+        "confidenceScore": 0.88
+      }
+    ]
+  ]
+}

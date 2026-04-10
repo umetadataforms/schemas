@@ -1,0 +1,29 @@
+{
+  "schema": "modular/common/data-modality/v0.0.2.json",
+  "data": [
+    {
+      "dataModality": "tabular",
+      "dataFormats": [
+        "TSV"
+      ]
+    },
+    {
+      "dataModality": "time series",
+      "dataFormats": [
+        "HDF5"
+      ]
+    },
+    {
+      "dataModality": "image",
+      "dataFormats": [
+        "DICOM"
+      ]
+    },
+    {
+      "dataModality": "audio",
+      "dataFormats": [
+        "WAV"
+      ]
+    }
+  ]
+}

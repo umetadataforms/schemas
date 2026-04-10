@@ -13,6 +13,12 @@
       "format": "TSV",
       "description": "SNOMED CT codes used to construct the variables in the dataset.",
       "sha256": "d2f4a0a986ce276567f1ab3424f804390ed15b82f3b8dbbfe1715d9dc5e8fa4c"
+    },
+    {
+      "path": "resources/custom/notes.custom",
+      "format": "CUSTOM_FORMAT",
+      "description": "Custom format file.",
+      "sha256": "b2f4a0a986ce276567f1ab3424f804390ed15b82f3b8dbbfe1715d9dc5e8fa4b"
     }
   ]
 }
