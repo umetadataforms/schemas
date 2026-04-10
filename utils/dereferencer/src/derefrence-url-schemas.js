@@ -14,12 +14,12 @@ const OUTPUT_DIR = path.resolve("../../../standalone/");
  */
 const SCHEMAS = {
   real_dataset_metadata: {
-    url: 'https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.1.json',
-    output: 'real-dataset-metadata/v1.0.0.json'
+    url: 'https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.2.json',
+    output: 'real-dataset-metadata/v0.0.2.json'
   },
   tabular_data_metadata: {
-    url: 'https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.1.json',
-    output: 'tabular-data-metadata/v1.0.0.json'
+    url: 'https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.2.json',
+    output: 'tabular-data-metadata/v0.0.2.json'
   }
 };
 

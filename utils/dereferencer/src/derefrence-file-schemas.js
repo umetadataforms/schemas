@@ -23,8 +23,8 @@ const ONLINE_BASE =
 
 // Schemas to dereference (repo-relative under modular/)
 const SCHEMAS = {
-  real_dataset_metadata: "real-dataset-metadata/v0.0.1.json",
-  tabular_data_metadata: "tabular-data-metadata/v0.0.1.json",
+  real_dataset_metadata: "real-dataset-metadata/v0.0.2.json",
+  tabular_data_metadata: "tabular-data-metadata/v0.0.2.json",
 };
 
 // -----------------------------------------------------------------------------

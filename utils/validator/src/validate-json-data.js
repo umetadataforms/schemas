@@ -205,12 +205,14 @@ function sectionHeader(title) {
     process.exit(1);
   }
 
-  if (!Array.isArray(testJson.data)) {
-    console.error('Test JSON "data" must be an array.');
-    process.exit(1);
+  let dataArray;
+  if (Array.isArray(testJson.data)) {
+    dataArray = testJson.data;
+  } else {
+    // Allow validating a single instance document directly.
+    // In this mode, the whole JSON is treated as the instance object.
+    dataArray = [testJson];
   }
-
-  const dataArray = testJson.data;
 
   // Ajv setup
   const ajv = new Ajv({
@@ -250,12 +252,36 @@ function sectionHeader(title) {
   let allValid = true;
 
   dataArray.forEach((item, index) => {
-    const valid = validate(item);
-    const entry = { index, valid };
-    if (!valid) {
+    const isWrappedCase =
+      item &&
+      typeof item === "object" &&
+      !Array.isArray(item) &&
+      Object.prototype.hasOwnProperty.call(item, "valid") &&
+      Object.prototype.hasOwnProperty.call(item, "value");
+
+    const expectedValid = isWrappedCase ? Boolean(item.valid) : true;
+    const value = isWrappedCase ? item.value : item;
+    const caseLabel = isWrappedCase ? item.case : undefined;
+
+    const valid = validate(value);
+    const passed = expectedValid ? valid : !valid;
+
+    const entry = {
+      index,
+      valid,
+      expectedValid,
+      passed,
+      case: caseLabel,
+    };
+
+    if (!passed) {
       allValid = false;
+    }
+
+    if (!valid) {
       entry.errors = validate.errors ? JSON.parse(JSON.stringify(validate.errors)) : [];
     }
+
     results.push(entry);
   });
 
@@ -340,12 +366,23 @@ function sectionHeader(title) {
   console.log("");
   console.log(sectionHeader("Validation"));
   for (const r of results) {
-    if (r.valid) {
-      console.log(`✔ data[${r.index}] is valid.`);
+    const caseSuffix = r.case ? ` (${r.case})` : "";
+    if (r.passed) {
+      console.log(
+        `✔ data[${r.index}]${caseSuffix} ${
+          r.expectedValid ? "is valid" : "is invalid as expected"
+        }.`
+      );
     } else {
-      console.error(`✖ data[${r.index}] is NOT valid.`);
-      console.error("Errors:");
-      console.error(JSON.stringify(r.errors, null, 2));
+      console.error(
+        `✖ data[${r.index}]${caseSuffix} ${
+          r.expectedValid ? "is NOT valid" : "is valid but expected invalid"
+        }.`
+      );
+      if (r.errors) {
+        console.error("Errors:");
+        console.error(JSON.stringify(r.errors, null, 2));
+      }
     }
   }
 
