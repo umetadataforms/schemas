@@ -1,0 +1,8 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unknown",
+  "description": "Marks as missing, unknown.",
+  "type": "string",
+  "const": "unknown"
+}

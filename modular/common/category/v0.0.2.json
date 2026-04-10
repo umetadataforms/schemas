@@ -1,0 +1,40 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/category/v0.0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Category",
+  "description": "A single category of a nominal, ordinal, or binary field.",
+  "type": "object",
+  "properties": {
+    "label": {
+      "title": "Label",
+      "description": "Clear and informative category label.\n\n**Constraints**: *Length*: 1-255 characters.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "code": {
+      "title": "Code",
+      "description": "Integer code used in data files instead of the label.",
+      "type": "integer"
+    },
+    "tags": {
+      "title": "Category Tags",
+      "allOf": [
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/tags/v0.0.2.json"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "label",
+    "code"
+  ],
+  "examples": [
+    {
+      "label": "male",
+      "code": 1
+    }
+  ]
+}

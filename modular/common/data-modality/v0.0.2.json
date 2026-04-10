@@ -1,0 +1,221 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/data-modality/v0.0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Format",
+  "description": "A recognised data format associated with a given recognised data modality.",
+  "$defs": {
+    "customFormat": {
+      "title": "Custom Format",
+      "description": "Custom data format string.\n\n**Guidelines**: Use a concise, human-readable format name.\n\n**Constraints**: Must contain only letters, numbers, spaces, or hyphens. *Length*: 1-255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 -]+$",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "customModality": {
+      "title": "Custom Modality",
+      "description": "Custom data modality.\n\n**Guidelines**: Use a concise, human-readable modality name.\n\n**Constraints**: Must contain only letters, numbers, spaces, or hyphens. *Length*: 1-255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 -]+$",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "tabularDataFormat": {
+      "title": "Tabular Data Format",
+      "anyOf": [
+        {
+          "title": "Select Format",
+          "type": "string",
+          "enum": [
+            "TSV",
+            "CSV"
+          ]
+        },
+        {
+          "$ref": "#/$defs/customFormat"
+        }
+      ]
+    },
+    "timeSeriesFormat": {
+      "title": "Time Series Format",
+      "anyOf": [
+        {
+          "title": "Select Format",
+          "type": "string",
+          "enum": [
+            "WFDB",
+            "iEEG-BIDS",
+            "BIDS",
+            "HDF5",
+            "TSV",
+            "CSV"
+          ]
+        },
+        {
+          "$ref": "#/$defs/customFormat"
+        }
+      ]
+    },
+    "imageFormat": {
+      "title": "Image Format",
+      "anyOf": [
+        {
+          "title": "Select Format",
+          "type": "string",
+          "enum": [
+            "DICOM",
+            "PNG",
+            "JPG",
+            "JPEG"
+          ]
+        },
+        {
+          "$ref": "#/$defs/customFormat"
+        }
+      ]
+    },
+    "allFormats": {
+      "title": "All Formats",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "TSV",
+            "CSV",
+            "WFDB",
+            "iEEG-BIDS",
+            "BIDS",
+            "HDF5",
+            "DICOM",
+            "PNG",
+            "JPG",
+            "JPEG"
+          ]
+        },
+        {
+          "$ref": "#/$defs/customFormat"
+        }
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "title": "Tabular Data",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "title": "Data Modality",
+          "description": "Cross-sectional, repeated measurements, or longitudinal tabular data.",
+          "const": "tabular"
+        },
+        "dataFormats": {
+          "title": "Data Formats",
+          "description": "Tabular data formats.\n\nTSV -- tab-delimited, CSV -- comma-separated flat text files. Note, if some columns in the tabular data contain either tabs or commas, they should be surrounded with double quotes.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tabularDataFormat"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    },
+    {
+      "title": "Time Series",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "title": "Data Modality",
+          "description": "Time series data.",
+          "const": "time series"
+        },
+        "dataFormats": {
+          "title": "Data Formats",
+          "description": "Time series formats.\n\nWFDB -- waveform database format for ECG data. iEEG-BIDS -- BIDS format for iEEG data, and BIDS format for other similar data. HDF5 -- Hierarchical Data Format Version 5, or TSV -- tab-delimited or CSV -- comma-separated files for other time series datasets.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/timeSeriesFormat"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    },
+    {
+      "title": "Images",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "title": "Data Modality",
+          "description": "Image data.",
+          "const": "image"
+        },
+        "dataFormats": {
+          "title": "Data Formats",
+          "description": "Image formats.\n\nDICOM -- Digital Imaging and Communications in Medicine format, PNG, JPG or JPEG.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/imageFormat"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    },
+    {
+      "title": "Custom Modality",
+      "type": "object",
+      "properties": {
+        "dataModality": {
+          "title": "Data Modality",
+          "description": "Custom data modality.",
+          "$ref": "#/$defs/customModality"
+        },
+        "dataFormats": {
+          "title": "Data Formats",
+          "description": "Custom data formats for the modality.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/customFormat"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dataModality",
+        "dataFormats"
+      ]
+    }
+  ],
+  "examples": [
+    [
+      {
+        "dataModality": "tabular",
+        "dataFormats": [
+          "TSV"
+        ]
+      },
+      {
+        "dataModality": "time series",
+        "dataFormats": [
+          "HDF5"
+        ]
+      },
+      {
+        "dataModality": "audio",
+        "dataFormats": [
+          "WAV"
+        ]
+      }
+    ]
+  ]
+}

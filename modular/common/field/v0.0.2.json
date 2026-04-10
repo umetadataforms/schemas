@@ -1,0 +1,359 @@
+{
+  "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/field/v0.0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Field",
+  "description": "A field or variable within a tabular data file.\n\n**Use**: Used to document each field or variable so users can interpret values, validate data types, and align variable semantics across datasets.\n\n**Guidelines**: Complete as many relevant sections as feasible. Set to `unknown` or `not applicable` as appropriate where supported.\n",
+  "type": "object",
+  "properties": {
+    "label": {
+      "title": "Label",
+      "description": "A short, stable, user-friendly identifier.\n\n**Use**: Used in scripts, interfaces, logs, and cross-references.\n\n**Guidelines**: Prefer PascalCase. Spaces are not allowed. The label should not be the description or definition of the field.\n\n**Constraints**: Must contain only letters, numbers, or underscores. *Length*: 2-128 characters.\n\n**Examples**: `SystolicBloodPressure` | `HeartFailure`\n",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+$",
+      "minLength": 2,
+      "maxLength": 128
+    },
+    "description": {
+      "title": "Description",
+      "description": "A concise definition.\n\n**Use**: Used in data dictionaries and field listings to clarify the field's meaning and context.\n\n**Guidelines**: Describe what the field refers to, measures, or encodes.\n\n**Constraints**: *Maximum length*: 5,000 characters.",
+      "type": "string",
+      "maxLength": 5000
+    },
+    "dataType": {
+      "title": "Data Type",
+      "description": "The data type of the values.\n\n**Use**: Used to interpret values and apply type-specific validation and processing.\n\n**Guidelines**: Choose the type that matches how the values are stored. Boolean values should be encoded as 0/1 and represented as integers.\n\n**Constraints**: Must be one of `integer`, `float`, `date`, `datetime`, or `string`.",
+      "type": "string",
+      "enum": [
+        "integer",
+        "float",
+        "date",
+        "datetime",
+        "string"
+      ]
+    },
+    "dateFormat": {
+      "title": "Date/Datetime Format",
+      "description": "String format for `date` and `datetime` values.\n\n**Use**: Used to interpret the source date or timestamp representation.\n\n**Guidelines**: Provide the format pattern used for encoding date/datetime values. Prefer ISO 8601 format. Set to `not applicable` for non-date/datetime fields.\n\n**Constraints**: *Maximum length*: 64 characters.\n\n**Examples**: `YYYY-MM-DD` | `YYYY-MM-DDTHH:MM:SS`.\n",
+      "anyOf": [
+        {
+          "title": "Edit",
+          "description": "Edit date/datetime format.",
+          "type": "string",
+          "maxLength": 64
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        }
+      ]
+    },
+    "measurementType": {
+      "title": "Measurement Type",
+      "description": "The measurement type or scale of the field.\n\n**Use**: Used to determine how the variable should be interpreted and handled in data visualisation, processing, and analysis.\n\n**Guidelines**:\n- Categorical fields: use `nominal` for unordered categories, `ordinal` for ordered categories, `binary` for two-category fields.\n- Numeric fields: use `discrete` for countable values, `continuous` for uncountable, or measurable quantities.\n- Set to `unknown` if the measurement type cannot be determined.\n- Set to `not applicable` for fields without a measurement type such as subject identifiers.\n- Set a custom measurement type if none of the above apply.\n\n**Constraints**: Must be one of `nominal`, `ordinal`, `binary`, `discrete`, `continuous`, `unknown`, `not applicable`, or custom string. *Maximum length*: 32 characters.\n",
+      "anyOf": [
+        {
+          "title": "Select",
+          "description": "Select from the list of the canonical measurement types.",
+          "type": "string",
+          "enum": [
+            "nominal",
+            "ordinal",
+            "binary",
+            "discrete",
+            "continuous"
+          ]
+        },
+        {
+          "title": "Custom",
+          "description": "Enter a custom measurement type; use this only if the canonical list doesn't contain an appropriate entry.",
+          "type": "string",
+          "maxLength": 32
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    },
+    "role": {
+      "title": "Intended Role",
+      "description": "The intended analytical or usage role.\n\n**Use**: Used in modelling and data processing to distinguish outcomes, predictors, and supporting fields.\n\n**Guidelines**:\n- Use `target` for outcomes to be predicted, `feature` for predictors, `auxiliary` for fields used to derive outcomes or features, `index` for indexing fields such as identifiers.\n- Set a custom role if none of the above apply.\n- Set to `unknown` if the intended role cannot be determined.\n\n**Constraints**: Must be one of `target`, `feature`, `auxiliary`, `index`, or a custom string. *Maximum length*: 32 characters.\n",
+      "anyOf": [
+        {
+          "title": "Select",
+          "description": "Select from the list of standard roles.",
+          "type": "string",
+          "enum": [
+            "target",
+            "feature",
+            "auxiliary",
+            "index"
+          ]
+        },
+        {
+          "title": "Custom",
+          "description": "Enter a custom role; use this only if the standard list doesn't contain an appropriate entry.",
+          "type": "string",
+          "maxLength": 32
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "A list of unique categories for a nominal, ordinal, or binary field.\n\n**Use**: Used in data dictionaries and field listings to clarify the categories' meaning and context.\n\n**Guidelines**: Provide only for categorical fields. Each item should include a label and an integer code. Set to `not applicable` for non-categorical fields. Set to `unknown` when the labels of the integer-coded categories are unknown.\n\n**Constraints**: *Number of categories*: 1-10,000. No duplicates.",
+      "anyOf": [
+        {
+          "title": "Categories",
+          "description": "A list of categories.",
+          "type": "array",
+          "items": {
+            "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/category/v0.0.2.json"
+          },
+          "uniqueItems": true,
+          "maxItems": 10000
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    },
+    "units": {
+      "title": "Units",
+      "description": "A measurement unit string as defined by the Unified Code for Units of Measure (UCUM).\n\n**Guidelines**: See https://unitsofmeasure.org/ucum. Set to `not applicable` if not applicable. Set to `unknown` if the unit is unknown.",
+      "anyOf": [
+        {
+          "title": "UCUM",
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/units/v0.0.2.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    },
+    "missingValueCode": {
+      "title": "Missing Value Code",
+      "description": "A single code used to represent missing values.\n\n**Use**: Used to parse missing values.\n\n**Guidelines**: Use either an integer or a short string; string values may include letters, numbers, forward slashes, underscores, hyphens, or spaces. Set to `not applicable` if the field has no missing values. Set to `unknown` if missing values exist but the missing value code is unknown.\n\n**Constraints**: *Maximum length* for string codes: 25 characters.",
+      "anyOf": [
+        {
+          "title": "String",
+          "type": "string",
+          "pattern": "^[ A-Za-z0-9/_-]*$",
+          "maxLength": 25
+        },
+        {
+          "title": "Integer",
+          "type": "integer"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    },
+    "fieldType": {
+      "title": "Field Type",
+      "description": "Special field type indicator.\n\n**Use**: Used in downstream processing of special fields.\n\n**Guidelines**: Use `standard` for variables to be used directly in analysis or variables used to derive targets or features, `subject_id` for subject identifiers, `baseline_indicator` for binary baseline flags (1 = baseline, 0 = follow-up), `record_datetime` for record or observation date/time, `temporal_order` for integer time order derived from observation timestamps, especially when actual observation timestamps are unavailable or cannot be provided, and `path` for file or directory path fields. Use a custom entry for special field types not listed here.\n\n**Constraints**: Must be one of `standard`, `subject_id`, `baseline_indicator`, `record_datetime`, `temporal_order`, `path`, or a custom entry. *Maximum length*: 128 characters.",
+      "anyOf": [
+        {
+          "title": "Select",
+          "description": "Select from the list of the pre-specified field types.",
+          "type": "string",
+          "default": "standard",
+          "enum": [
+            "standard",
+            "subject_id",
+            "baseline_indicator",
+            "record_datetime",
+            "temporal_order",
+            "path"
+          ]
+        },
+        {
+          "title": "Custom",
+          "description": "Enter a custom field type; use this only if the pre-specified list doesn't contain an appropriate entry.",
+          "type": "string",
+          "maxLength": 128
+        }
+      ]
+    },
+    "tags": {
+      "title": "Field Tags",
+      "description": "Tags associated with the field.\n\n**Use**: Used in data discovery and semantic alignment of fields from different datasets.\n\n**Guidelines**: Set to `not applicable` for fields that do not represent variables such as dates. Set to `unknown` if the tags were not specified but could be in principle.",
+      "anyOf": [
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/tags/v0.0.2.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    },
+    "resources": {
+      "title": "Resources",
+      "description": "A list of URL links or file references related to measurement or construction.\n\n**Use**: Provides supporting documentation such as codebooks, protocols.\n\n**Guidelines**: Use URL links or file references. Set to `not applicable` if there is no further information on the field. Set to `unknown` if relevant resources exist but cannot be retrieved or shared.\n\n**Constraints**: *Maximum number of items*: 1,000. No duplicates.",
+      "anyOf": [
+        {
+          "title": "Resources",
+          "description": "External resources:  URL links or file paths.",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/annotated-url/v0.0.1.json"
+              },
+              {
+                "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/file/v0.0.1.json"
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 1000
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/not-applicable/v0.0.1.json"
+        },
+        {
+          "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/unknown/v0.0.1.json"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "label",
+    "description",
+    "dataType",
+    "measurementType"
+  ],
+  "examples": [
+    {
+      "label": "SubjectID",
+      "description": "Subject identifier.",
+      "dataType": "integer",
+      "dateFormat": "not applicable",
+      "measurementType": "not applicable",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "subject_id",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    },
+    {
+      "label": "Baseline",
+      "description": "Baseline indicator.",
+      "dataType": "integer",
+      "dateFormat": "not applicable",
+      "measurementType": "binary",
+      "categories": [
+        {
+          "label": "no",
+          "code": 0
+        },
+        {
+          "label": "yes",
+          "code": 1
+        }
+      ],
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "baseline_indicator",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    },
+    {
+      "label": "BaselineDate",
+      "description": "Baseline date.",
+      "dataType": "date",
+      "dateFormat": "YYYY-MM-DD",
+      "measurementType": "not applicable",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "record_datetime",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    },
+    {
+      "label": "SystolicBloodPressure",
+      "description": "Systolic blood pressure measured at ICU admission.",
+      "dataType": "float",
+      "dateFormat": "not applicable",
+      "measurementType": "continuous",
+      "role": "feature",
+      "categories": "not applicable",
+      "units": "mm[Hg]",
+      "missingValueCode": "not applicable",
+      "fieldType": "standard",
+      "tags": [
+        {
+          "code": 271649006,
+          "vocabulary": "SNOMED CT",
+          "vocabularyVersion": "UK v20260211",
+          "name": "Systolic blood pressure",
+          "isPrimary": true
+        }
+      ],
+      "resources": "not applicable"
+    },
+    {
+      "label": "Sex",
+      "description": "Biological sex",
+      "dataType": "integer",
+      "dateFormat": "not applicable",
+      "measurementType": "binary",
+      "categories": [
+        {
+          "label": "female",
+          "code": 0
+        },
+        {
+          "label": "male",
+          "code": 1
+        }
+      ],
+      "role": "feature",
+      "units": "not applicable",
+      "missingValueCode": "NA",
+      "fieldType": "standard",
+      "tags": [
+        {
+          "code": 734000001,
+          "name": "Biological sex",
+          "vocabulary": "SNOMED CT",
+          "vocabularyVersion": "UK v20260211",
+          "isPrimary": true
+        }
+      ],
+      "resources": "not applicable"
+    },
+    {
+      "label": "ImageFile",
+      "description": "Path to the associated image file.",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "not applicable",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "path",
+      "tags": "not applicable",
+      "resources": "not applicable"
+    }
+  ]
+}
