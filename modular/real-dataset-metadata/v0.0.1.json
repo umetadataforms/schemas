@@ -566,7 +566,7 @@
     },
     "references": {
       "title": "References",
-      "description": "List of references cited within the metadata descriptions in this metadata record, formatted in American Medical Association (AMA) style.\n\n**Use**: Used for adding context to the metadata content.\n\n**Guidelines**: Use this field only if other works have been referenced within the text of any of the fields. Do not use this for providing information about how to cite the dataset. Set to Not Applilcable – `not applicable`, if there are no citations within this document.\n\n**Constraints**: *Maximum length*: 5,000 characters.\n",
+      "description": "List of references cited within the metadata descriptions in this metadata record, formatted in American Medical Association (AMA) style.\n\n**Use**: Used for adding context to the metadata content.\n\n**Guidelines**: Use this field only if other works have been referenced within the text of any of the fields. Do not use this for providing information about how to cite the dataset. Set to Not Applicable – `not applicable`, if there are no citations within this document.\n\n**Constraints**: *Maximum length*: 5,000 characters.\n",
       "anyOf": [
         {
           "type": "string",
