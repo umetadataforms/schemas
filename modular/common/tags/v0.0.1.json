@@ -13,7 +13,7 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "A user-friendly tag name. Keep it short, descriptive, and unambiguous. Avoid acronyms unless widely recognized. *Maximum length*: 255 characters.",
+                "description": "A user-friendly tag name. Keep it short, descriptive, and unambiguous. Avoid acronyms unless widely recognised. *Maximum length*: 255 characters.",
                 "maxLength": 255
               }
             }

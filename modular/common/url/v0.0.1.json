@@ -2,7 +2,7 @@
   "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/url/v0.0.1.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "URL Link",
-  "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator). *Maximum length*: 2,048 characters.",
+  "description": "A valid HTTP or HTTPS URL (Uniform Resource Locator).\n\n**Constraints**: *Maximum length*: 2,048 characters.",
   "type": "string",
   "format": "uri",
   "pattern": "^https?://.+$",

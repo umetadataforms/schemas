@@ -2,7 +2,7 @@
   "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/date/v0.0.1.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Date",
-  "description": "A date string formatted as YYYY-MM-DD according to ISO 8601. Restricted to years 1900–2099. *Example*: 2020-12-31",
+  "description": "A date string formatted as YYYY-MM-DD according to ISO 8601.\n\n**Constraints**: Restricted to years 1900–2099. *Example*: 2020-12-31",
   "type": "string",
   "pattern": "^((19[0-9]{2})|(20[0-9]{2}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
   "format": "date",

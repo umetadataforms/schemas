@@ -7,16 +7,16 @@
   "properties": {
     "path": {
       "title": "Path",
-      "description": "A relative file or directory path from the root directory. Must include only letters, numbers, underscores, hyphens, forward slashes, or periods. Parent directory references (../) are not allowed. *Maximum length*: 255 characters.",
+      "description": "A relative file or directory path from the root directory.\n\n**Constraints**: Must include only letters, numbers, underscores, hyphens, forward slashes, or periods. Parent directory references (../) are not allowed. *Maximum length*: 255 characters.",
       "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/path/v0.0.1.json"
     },
     "format": {
       "title": "Format",
-      "description": "The file's format such as PDF, TSV etc., or user-specified format. Must contain only letters, numbers, hyphens or underscores. *Length*: 1-30 characters.",
+      "description": "The file's format such as PDF, TSV etc., or user-specified format.\n\n**Constraints**: Must contain only letters, numbers, hyphens or underscores. *Length*: 1-30 characters.",
       "maxLength": 30,
       "anyOf": [
         {
-          "title": "Select Format",
+          "title": "Select",
           "type": "string",
           "enum": [
             "TXT",
@@ -31,26 +31,31 @@
           ]
         },
         {
-          "title": "Enter Format",
+          "title": "Custom",
           "type": "string",
           "pattern": "^[A-Za-z0-9_-]+$"
         }
       ]
     },
     "sha256": {
-      "title": "SHA256 Checksum",
-      "description": "The SHA256 checksum of the file.",
       "$ref": "https://github.com/umetadataforms/schemas/raw/main/modular/common/sha256/v0.0.1.json"
+    },
+    "label": {
+      "title": "File Label",
+      "description": "Human-readable file label.\n\n**Constraints**: Must contain only letters, numbers, or underscores. *Maximum length*: 255 characters.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_]+$",
+      "maxLength": 255
     },
     "title": {
       "title": "Title",
-      "description": "A short, descriptive, user-friendly file title, with each word capitalised. *Maximum length*: 255 characters.",
+      "description": "A short, descriptive, user-friendly file title, with each word capitalised.\n\n**Constraints**: *Maximum length*: 255 characters.",
       "type": "string",
       "maxLength": 255
     },
     "description": {
       "title": "Description",
-      "description": "A brief description of the file's contents. *Maximum length*: 5,000 characters.",
+      "description": "A brief description of the file's contents.\n\n**Constraints**: *Maximum length*: 5,000 characters.",
       "type": "string",
       "maxLength": 5000
     }

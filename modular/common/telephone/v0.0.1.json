@@ -2,7 +2,7 @@
   "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/telephone/v0.0.1.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Telephone",
-  "description": "A telephone number in E.164 format. Must start with '+' followed by a country code and digits, with no whitespace or separators. *Maximum length*: 16 characters. *Example*: +442075895111",
+  "description": "A telephone number in E.164 format.\n\n**Guidelines**: Must start with '+' followed by a country code and digits, with no space or separators.\n\n**Constraints**: *Maximum length*: 16 characters. *Example*: +442075895111\n",
   "type": "string",
   "pattern": "^\\+[1-9]\\d{1,14}$",
   "maxLength": 16,

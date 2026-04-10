@@ -7,7 +7,7 @@
   "properties": {
     "name": {
       "title": "Name",
-      "description": "The official name of the organisation. *Maximum length*: 510 characters.",
+      "description": "The official name of the organisation.\n\n**Constraints**: *Maximum length*: 510 characters.",
       "type": "string",
       "maxLength": 510
     },
@@ -20,7 +20,7 @@
     },
     "address": {
       "title": "Address",
-      "description": "The address of the organisation. *Maximum length*: 1,024 characters.",
+      "description": "The address of the organisation.\n\n**Constraints**: *Maximum length*: 1,024 characters.",
       "type": "string",
       "maxLength": 1024
     },
@@ -40,7 +40,7 @@
             },
             "comments": {
               "title": "Additional Comments",
-              "description": "Additional comments about how to make contact. *Maximum length*: 5000 characters.",
+              "description": "Additional comments about how to make contact.\n\n**Constraints**: *Maximum length*: 5000 characters.",
               "type": "string",
               "maxLength": 50000
             }

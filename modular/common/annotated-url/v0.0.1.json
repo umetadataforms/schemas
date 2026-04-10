@@ -2,7 +2,7 @@
   "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/annotated-url/v0.0.1.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "URL Link",
-  "description": "Uniform Resource Locator (URL) with optional title and description.",
+  "description": "Uniform Resource Locator (URL) with a title and optional description.",
   "type": "object",
   "properties": {
     "url": {
@@ -11,13 +11,14 @@
     },
     "title": {
       "title": "Title",
-      "description": "A short, descriptive, user-friendly URL title, with each main word capitalised. Used in interfaces for display purposes instead of the actual URL link. Use specific, meaningful keywords to indicate what the URL is about at a glance. *Maximum length*: 255 characters.",
+      "description": "A short, descriptive, user-friendly URL title, with each main word capitalised. \n\n**Use**: Used in interfaces for display purposes instead of the actual URL link. \n\n**Guidelines**: Use specific, meaningful keywords to indicate what the URL is about at a glance. \n\n**Constraints**: *Maximum length*: 255 characters.",
       "type": "string",
+      "minLength": 1,
       "maxLength": 255
     },
     "description": {
       "title": "Description",
-      "description": "A brief description of the URL's content. Be clear and concise. *Maximum length*: 1,500 characters.",
+      "description": "A brief description of the URL's content. \n\n**Guidelines**: Be clear and concise.\n\n**Constraints**: *Maximum length*: 1,500 characters.",
       "type": "string",
       "maxLength": 1500
     }

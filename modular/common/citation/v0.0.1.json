@@ -2,7 +2,7 @@
   "$id": "https://github.com/umetadataforms/schemas/raw/main/modular/common/citation/v0.0.1.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Citation",
-  "description": "A citation formatted in American Medical Association (AMA) 11th edition style. *Maximum length*: 512 characters. Refer to https://www.amamanualofstyle.com/ for official guidelines.",
+  "description": "A citation formatted in American Medical Association (AMA) 11th edition style.\n\n**Guidelines**: Refer to https://www.amamanualofstyle.com/ for official guidelines.\n\n**Constraints**: *Maximum length*: 512 characters.\n",
   "type": "string",
   "maxLength": 512,
   "examples": [
