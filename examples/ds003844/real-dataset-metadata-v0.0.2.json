@@ -1,0 +1,93 @@
+{
+  "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/real-dataset-metadata/v0.0.2.json",
+  "label": "RESPect",
+  "version": "1.0.3",
+  "versionDate": "2021-10-26",
+  "versionInfo": "OpenNeuro snapshot version 1.0.3",
+  "title": "RESPect iEEG ECoG Dataset of Epilepsy Surgery Patients",
+  "summary": "Intracranial EEG recordings of 6 epilepsy surgery patients with acute intraoperative ECoG organized in BIDS RESPect dataset.",
+  "purpose": "Collected to tailor epilepsy surgery.",
+  "baseline": "Surgery start date.",
+  "inclusionCriteria": "Epilepsy surgery patients in Utrecht UMC undergoing intraoperative ECoG.",
+  "exclusionCriteria": "unknown",
+  "targets": "iEEG signal features tied to seizure localization and surgical resection boundaries.",
+  "studyDesign": "observational",
+  "temporalCoverage": {
+    "startDate": "2008-01-01",
+    "endDate": "2021-10-26"
+  },
+  "geographicCoverage": {
+    "geographicInfo": "Utrecht, Netherlands.",
+    "geographicAreas": [
+      {
+        "countryCode": "NL"
+      }
+    ]
+  },
+  "dataSampling": "unknown",
+  "acquisitionMethods": "Data collected via MicroMed SD64 or Flexi EEG amplifiers.",
+  "annotationMethods": "unknown",
+  "limitations": "unknown",
+  "dataPreprocessing": "unknown",
+  "healthcareSettings": [
+    "tertiary care"
+  ],
+  "patientNum": 6,
+  "dataSources": [
+    {
+      "url": "https://openneuro.org/datasets/ds003844/versions/1.0.3",
+      "title": "OpenNeuro: ds003844",
+      "description": "RESPect dataset landing page."
+    }
+  ],
+  "additionalDocumentation": [
+    {
+      "url": "https://openneuro.org/datasets/ds003844/versions/1.0.3",
+      "title": "OpenNeuro documentation",
+      "description": "Dataset documentation and version details."
+    }
+  ],
+  "dataModalities": [
+    {
+      "dataModality": "tabular",
+      "dataFormats": [
+        "TSV"
+      ]
+    },
+    {
+      "dataModality": "time series",
+      "dataFormats": [
+        "iEEG-BIDS"
+      ]
+    }
+  ],
+  "privacyCompliance": "De-identified per OpenNeuro and BIDS iEEG standards.",
+  "ethicsApproval": "unknown",
+  "patientConsent": "unknown",
+  "acknowledgements": "unknown",
+  "funding": "University Medical Center Utrecht",
+  "owners": "unknown",
+  "doi": "10.18112/openneuro.ds003844.v1.0.3",
+  "howToCite": {
+    "instructions": "Please cite the following reference.",
+    "citations": [
+      "Demuru et al. (2021) A Practical Workflow for Organizing Clinical Intraoperative and Long-Term iEEG data in BIDS. Submitted to Neuroinformatics."
+    ]
+  },
+  "references": "not applicable",
+  "modellingTasks": [
+    "classification"
+  ],
+  "keywords": [
+    "iEEG",
+    "ECoG",
+    "epilepsy",
+    "RESPect",
+    "clinical",
+    "surgery"
+  ],
+  "licence": {
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "title": "CC0"
+  }
+}

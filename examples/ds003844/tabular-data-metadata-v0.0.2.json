@@ -1,0 +1,126 @@
+{
+  "schema": "https://github.com/umetadataforms/schemas/raw/main/modular/tabular-data-metadata/v0.0.2.json",
+  "files": [
+    {
+      "path": "participants.tsv",
+      "format": "TSV",
+      "label": "participants"
+    }
+  ],
+  "fields": [
+    {
+      "label": "Id",
+      "description": "Record Id",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "not applicable",
+      "role": "index",
+      "categories": "not applicable",
+      "units": "not applicable",
+      "missingValueCode": "not applicable",
+      "fieldType": "subject_id",
+      "tags": "unknown",
+      "resources": "not applicable"
+    },
+    {
+      "label": "sex",
+      "description": "Sex",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "nominal",
+      "role": "feature",
+      "categories": [
+        {
+          "label": "Female",
+          "code": 1
+        },
+        {
+          "label": "Male",
+          "code": 2
+        }
+      ],
+      "units": "not applicable",
+      "missingValueCode": "NA",
+      "fieldType": "standard",
+      "tags": "unknown",
+      "resources": "not applicable"
+    },
+    {
+      "label": "Lobe",
+      "description": "The lobe the resection was performed",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "nominal",
+      "role": "feature",
+      "categories": [
+        {
+          "label": "Temporal",
+          "code": 1
+        },
+        {
+          "label": "Frontal",
+          "code": 2
+        },
+        {
+          "label": "Occipital",
+          "code": 3
+        },
+        {
+          "label": "Parieto-occipital",
+          "code": 4
+        }
+      ],
+      "units": "not applicable",
+      "missingValueCode": "NA",
+      "fieldType": "standard",
+      "tags": "unknown",
+      "resources": "not applicable"
+    },
+    {
+      "label": "Hemisphere",
+      "description": "The hemisphere the resection was performed",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "nominal",
+      "role": "feature",
+      "categories": [
+        {
+          "label": "Right",
+          "code": 1
+        },
+        {
+          "label": "Left",
+          "code": 2
+        }
+      ],
+      "units": "not applicable",
+      "missingValueCode": "NA",
+      "fieldType": "standard",
+      "tags": "unknown",
+      "resources": "not applicable"
+    },
+    {
+      "label": "Adult_child",
+      "description": "Adult (18+) or child",
+      "dataType": "string",
+      "dateFormat": "not applicable",
+      "measurementType": "nominal",
+      "role": "feature",
+      "categories": [
+        {
+          "label": "Adult",
+          "code": 1
+        },
+        {
+          "label": "Child",
+          "code": 2
+        }
+      ],
+      "units": "not applicable",
+      "missingValueCode": "NA",
+      "fieldType": "standard",
+      "tags": "unknown",
+      "resources": "not applicable"
+    }
+  ]
+}
