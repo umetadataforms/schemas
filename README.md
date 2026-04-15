@@ -1,4 +1,4 @@
-# uMetadataForms Schemas
+# uMetadataForms Schemas v0.0.2
 
 A set of metadata schemas for describing health datasets based on [JSON
 Schema](http://json-schema.org/). 
