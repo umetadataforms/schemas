@@ -1,7 +1,9 @@
-# uMetadataForms Schemas v0.0.2
+# uMetadataForms Schemas
 
 A set of metadata schemas for describing health datasets based on [JSON
 Schema](http://json-schema.org/). 
+
+Version: v0.0.2.
 
 **Please note that this project is still in active development stage**.
 
